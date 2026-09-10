@@ -7,7 +7,7 @@
 Bharat F1 is an interactive Formula 1 university racing club web application featuring an interactive 3D Formula 1 car built with Three.js (custom Indian Tricolor livery and Ashoka Chakra emblem), realistic procedural V6 hybrid engine audio synthesis (Web Audio API), telemetry instrumentation, community polling system, and a comprehensive role-based administrator portal.
 
 **Created by**: [Dhruv Ahlawat (@AhlawatDhruv)](https://github.com/AhlawatDhruv)
-
+[Bhavesh Kumar (@bhaveshneyol)](https://github.com/bhaveshneyol)
 ---
 
 ## 🏁 Key Features
@@ -80,5 +80,5 @@ bharat-f1/
 ---
 
 ## 👤 Author & GitHub
-- **GitHub**: [@AhlawatDhruv](https://github.com/AhlawatDhruv)
-- **Repository**: [https://github.com/AhlawatDhruv/bharat-f1](https://github.com/AhlawatDhruv/bharat-f1)
+- **GitHub**: [@AhlawatDhruv](https://github.com/AhlawatDhruv) [@bhaveshneyol](https://github.com/bhaveshneyol)
+- **Repository**: [https://github.com/AhlawatDhruv/bharat-f1](https://github.com/AhlawatDhruv/bharat-f1)[https://github.com/bhaveshneyol/bharat-f1] (https://github.com/bhaveshneyol/bharat-f1)
