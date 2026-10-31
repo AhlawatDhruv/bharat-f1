@@ -1,10 +1,10 @@
-# 🏎️ Bharat F1 — Official Formula 1 Racing Club & 3D Interactive Model
+# 🏎️ BMU F1 — Official BML Munjal University Formula 1 Racing Club & 3D Interactive Model
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-AhlawatDhruv-orange?logo=github)](https://github.com/AhlawatDhruv)
 [![Python 3](https://img.shields.io/badge/Backend-Flask%203.0-blue?logo=python)](app.py)
 [![Three.js](https://img.shields.io/badge/3D%20Engine-Three.js-black?logo=three.js)](static/three.min.js)
 
-Bharat F1 is an interactive Formula 1 university racing club web application featuring an interactive 3D Formula 1 car built with Three.js (custom Indian Tricolor livery and Ashoka Chakra emblem), realistic procedural V6 hybrid engine audio synthesis (Web Audio API), telemetry instrumentation, community polling system, and a comprehensive role-based administrator portal.
+BMU F1 is an interactive BML Munjal University Formula 1 racing club web application featuring an interactive 3D Formula 1 car built with Three.js (custom Indian Tricolor livery and Ashoka Chakra emblem), realistic procedural V6 hybrid engine audio synthesis (Web Audio API), telemetry instrumentation, community polling system, and a comprehensive role-based administrator portal.
 
 **Created by**: [Dhruv Ahlawat (@AhlawatDhruv)](https://github.com/AhlawatDhruv)
 

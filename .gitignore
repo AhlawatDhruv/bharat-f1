@@ -12,3 +12,4 @@ venv/
 *.db
 *.db-journal
 .DS_Store
+cloudflared.exe

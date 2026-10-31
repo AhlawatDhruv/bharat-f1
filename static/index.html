@@ -3,1045 +3,10 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Bharat F1 | Official University Formula 1 Racing Club</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='10.66' fill='%23FF9933'/><rect y='10.66' width='32' height='10.66' fill='%23FFFFFF'/><rect y='21.33' width='32' height='10.66' fill='%23138808'/><circle cx='16' cy='16' r='4' fill='%23000080'/></svg>">
+<title>BMU F1 | Official BML Munjal University Formula 1 Racing Club</title>
+<link rel="icon" type="image/png" href="bmu-logo.png">
 
-<style>
-  :root {
-    --saffron: #FF9933;
-    --saffron-glow: rgba(255, 153, 51, 0.4);
-    --white: #F8F9FA;
-    --green: #138808;
-    --green-glow: rgba(19, 136, 8, 0.4);
-    --navy: #000080;
-    --f1-red: #E10600;
-    --f1-red-glow: rgba(225, 6, 0, 0.45);
-    --gold: #F5A623;
-    --gold-glow: rgba(245, 166, 35, 0.4);
-    --dark-bg: #070709;
-    --dark-surface: #0f0f14;
-    --dark-card: rgba(18, 18, 24, 0.92);
-    --dark-card-solid: #13131a;
-    --border-subtle: rgba(255, 255, 255, 0.08);
-    --border-accent: rgba(255, 153, 51, 0.35);
-    --text-primary: #F5F5F7;
-    --text-secondary: #A2A2AD;
-    --text-muted: #686875;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-    background: var(--dark-bg);
-    color: var(--text-primary);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* Tricolor top border accent */
-  .tricolor-stripe {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #FF9933 0%, #FFFFFF 50%, #138808 100%);
-    z-index: 1000;
-  }
-
-  /* Top Navigation */
-  nav {
-    position: fixed;
-    top: 3px; left: 0; right: 0;
-    height: 64px;
-    background: rgba(8, 8, 12, 0.94);
-    backdrop-filter: blur(18px);
-    border-bottom: 1px solid var(--border-subtle);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1.75rem;
-    z-index: 999;
-  }
-
-  .nav-brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    cursor: pointer;
-    user-select: none;
-  }
-
-  .nav-flag {
-    display: flex;
-    flex-direction: column;
-    width: 32px;
-    height: 22px;
-    border-radius: 3px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(255, 153, 51, 0.35);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-  }
-  .flag-top { flex: 1; background: #FF9933; }
-  .flag-mid {
-    flex: 1;
-    background: #FFFFFF;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .flag-mid::after {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    border: 1.5px solid #000080;
-    box-sizing: border-box;
-  }
-  .flag-bot { flex: 1; background: #138808; }
-
-  .brand-title {
-    font-size: 1.35rem;
-    font-weight: 900;
-    letter-spacing: 1.5px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .brand-title .f1-badge {
-    background: linear-gradient(135deg, var(--f1-red), #b00400);
-    color: #fff;
-    font-size: 0.85rem;
-    padding: 2px 7px;
-    border-radius: 4px;
-    letter-spacing: 1px;
-    box-shadow: 0 0 10px var(--f1-red-glow);
-  }
-
-  .nav-tabs {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-
-  .nav-tab-btn {
-    padding: 10px 18px;
-    border-radius: 8px;
-    background: transparent;
-    border: none;
-    color: var(--text-secondary);
-    font-size: 0.92rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .nav-tab-btn:hover {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.05);
-  }
-  .nav-tab-btn.active {
-    color: #fff;
-    background: rgba(225, 6, 0, 0.15);
-    border: 1px solid rgba(225, 6, 0, 0.4);
-    box-shadow: 0 0 14px rgba(225, 6, 0, 0.25);
-  }
-  .nav-tab-btn.hidden { display: none !important; }
-
-  .nav-auth {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .github-nav-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    padding: 6px 13px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 8px;
-    color: var(--text-primary);
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 600;
-    transition: all 0.2s ease;
-  }
-  .github-nav-link:hover {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: var(--saffron);
-    color: #fff;
-    box-shadow: 0 0 12px var(--saffron-glow);
-    transform: translateY(-1px);
-  }
-
-  .user-pill {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border-subtle);
-    padding: 6px 14px;
-    border-radius: 30px;
-  }
-  .user-name {
-    font-weight: 600;
-    font-size: 0.9rem;
-  }
-  .role-badge {
-    font-size: 0.68rem;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 20px;
-    letter-spacing: 0.6px;
-    text-transform: uppercase;
-  }
-  .role-admin {
-    background: linear-gradient(135deg, #FF9933, #E10600);
-    color: #fff;
-    box-shadow: 0 0 8px rgba(255, 153, 51, 0.4);
-  }
-  .role-member {
-    background: linear-gradient(135deg, #138808, #0e6406);
-    color: #fff;
-  }
-  .role-guest {
-    background: #2a2a35;
-    color: #a0a0b0;
-  }
-
-  /* Common Buttons */
-  .btn {
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-size: 0.88rem;
-    font-weight: 600;
-    cursor: pointer;
-    border: 1px solid transparent;
-    transition: all 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    user-select: none;
-  }
-  .btn-sm { padding: 6px 12px; font-size: 0.82rem; }
-  .btn-admin {
-    background: linear-gradient(135deg, #FF9933, #E10600);
-    color: #fff;
-    box-shadow: 0 0 12px rgba(255, 153, 51, 0.35);
-  }
-  .btn-admin:hover {
-    box-shadow: 0 0 18px rgba(255, 153, 51, 0.6);
-    transform: translateY(-1px);
-  }
-  .btn-red {
-    background: var(--f1-red);
-    color: #fff;
-    box-shadow: 0 0 12px var(--f1-red-glow);
-  }
-  .btn-red:hover {
-    background: #b50500;
-    box-shadow: 0 0 18px var(--f1-red-glow);
-    transform: translateY(-1px);
-  }
-  .btn-gold {
-    background: linear-gradient(135deg, var(--gold), #d98214);
-    color: #000;
-    font-weight: 700;
-    box-shadow: 0 0 12px var(--gold-glow);
-  }
-  .btn-gold:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 0 18px var(--gold-glow);
-  }
-  .btn-ghost {
-    background: rgba(255, 255, 255, 0.06);
-    color: var(--text-primary);
-    border: 1px solid var(--border-subtle);
-  }
-  .btn-ghost:hover {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.2);
-  }
-  .btn-full { width: 100%; }
-
-  /* Views Container */
-  .views-wrapper {
-    position: relative;
-    padding-top: 67px;
-    height: 100vh;
-    overflow: hidden;
-  }
-
-  .view-pane {
-    display: none;
-    height: calc(100vh - 67px);
-    position: relative;
-    overflow-y: auto;
-  }
-  .view-pane.active { display: block; }
-
-  /* 3D Scene View */
-  #view-car {
-    position: relative;
-    height: calc(100vh - 67px);
-    overflow: hidden;
-    background: radial-gradient(circle at 50% 35%, #181824 0%, #08080c 75%, #040406 100%);
-  }
-
-  #canvas-container {
-    width: 100%;
-    height: 100%;
-    cursor: grab;
-  }
-  #canvas-container:active { cursor: grabbing; }
-
-  /* 3D Scene HUD Overlays */
-  .hud-top-left {
-    position: absolute;
-    top: 20px; left: 24px;
-    z-index: 20;
-    pointer-events: none;
-    max-width: 360px;
-  }
-  .car-badge-title {
-    font-size: 1.6rem;
-    font-weight: 900;
-    letter-spacing: 2px;
-    color: #fff;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .car-badge-subtitle {
-    font-size: 0.82rem;
-    color: var(--text-secondary);
-    letter-spacing: 1px;
-    margin-top: 2px;
-  }
-
-  /* Live Telemetry Panel */
-  .telemetry-card {
-    margin-top: 14px;
-    background: rgba(14, 14, 20, 0.78);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    padding: 12px 16px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    pointer-events: auto;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-  }
-  .tele-item { text-align: center; }
-  .tele-label {
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    font-weight: 700;
-    letter-spacing: 0.8px;
-  }
-  .tele-value {
-    font-family: 'SF Mono', Consolas, monospace;
-    font-size: 1.15rem;
-    font-weight: 800;
-    color: #fff;
-    margin-top: 2px;
-  }
-  .tele-value.accent { color: var(--gold); }
-  .tele-value.red { color: var(--f1-red); }
-
-  /* HUD Top Right Controls */
-  .hud-top-right {
-    position: absolute;
-    top: 20px; right: 24px;
-    z-index: 20;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 10px;
-  }
-  .hud-btn-group {
-    display: flex;
-    gap: 8px;
-    background: rgba(14, 14, 20, 0.78);
-    backdrop-filter: blur(12px);
-    padding: 6px;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  .hud-btn {
-    padding: 8px 14px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid var(--border-subtle);
-    border-radius: 6px;
-    color: #fff;
-    font-size: 0.84rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .hud-btn:hover { background: rgba(255, 255, 255, 0.15); }
-  .hud-btn.active {
-    background: var(--gold);
-    color: #000;
-    border-color: var(--gold);
-    box-shadow: 0 0 12px var(--gold-glow);
-  }
-  .hud-btn.active-race {
-    background: linear-gradient(135deg, var(--f1-red), #ff3b30);
-    color: #fff;
-    border-color: var(--f1-red);
-    box-shadow: 0 0 16px var(--f1-red-glow);
-    animation: racePulse 1.2s infinite alternate;
-  }
-  @keyframes racePulse {
-    from { box-shadow: 0 0 12px var(--f1-red-glow); }
-    to { box-shadow: 0 0 24px rgba(225, 6, 0, 0.8); }
-  }
-
-  /* Bottom Dock - Part Selector */
-  .bottom-dock {
-    position: absolute;
-    bottom: 22px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 25;
-    background: rgba(12, 12, 18, 0.85);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 40px;
-    padding: 8px 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
-    max-width: 94vw;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-  .bottom-dock::-webkit-scrollbar { display: none; }
-
-  .dock-pill {
-    padding: 7px 14px;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid transparent;
-    color: var(--text-secondary);
-    font-size: 0.82rem;
-    font-weight: 600;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .dock-pill:hover {
-    background: rgba(255, 255, 255, 0.12);
-    color: #fff;
-  }
-  .dock-pill.active {
-    background: linear-gradient(135deg, rgba(255, 153, 51, 0.25), rgba(225, 6, 0, 0.25));
-    border-color: var(--gold);
-    color: #fff;
-    box-shadow: 0 0 12px rgba(245, 166, 35, 0.35);
-  }
-
-  /* Part Info Inspection Card */
-  .part-inspection-card {
-    position: absolute;
-    bottom: 86px;
-    right: 28px;
-    width: 380px;
-    max-width: calc(100vw - 40px);
-    background: var(--dark-card);
-    backdrop-filter: blur(20px);
-    border: 1px solid var(--border-accent);
-    border-radius: 14px;
-    padding: 20px;
-    z-index: 30;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
-    display: none;
-    animation: slideInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  @keyframes slideInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .part-inspection-card.show { display: block; }
-
-  .part-card-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-bottom: 12px;
-  }
-  .part-category {
-    font-size: 0.68rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--gold);
-    background: rgba(245, 166, 35, 0.12);
-    padding: 3px 8px;
-    border-radius: 4px;
-    border: 1px solid rgba(245, 166, 35, 0.3);
-  }
-  .part-close-btn {
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    font-size: 1.2rem;
-    cursor: pointer;
-    line-height: 1;
-    padding: 2px 6px;
-    border-radius: 4px;
-  }
-  .part-close-btn:hover { color: #fff; background: rgba(255,255,255,0.1); }
-
-  .part-title {
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: #fff;
-    margin-top: 4px;
-  }
-  .part-desc {
-    font-size: 0.88rem;
-    color: var(--text-secondary);
-    line-height: 1.5;
-    margin: 10px 0 16px 0;
-  }
-
-  .specs-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    background: rgba(0, 0, 0, 0.35);
-    border-radius: 10px;
-    padding: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-  }
-  .spec-item { display: flex; flex-direction: column; }
-  .spec-item.full-width { grid-column: span 2; }
-  .spec-lbl {
-    font-size: 0.68rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    font-weight: 700;
-  }
-  .spec-val {
-    font-size: 0.86rem;
-    color: var(--text-primary);
-    font-weight: 600;
-    margin-top: 2px;
-  }
-
-  /* Polls View */
-  #view-polls {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem 5rem 1.5rem;
-  }
-
-  .guest-banner {
-    background: linear-gradient(135deg, rgba(245, 166, 35, 0.15), rgba(225, 6, 0, 0.15));
-    border: 1px solid rgba(245, 166, 35, 0.35);
-    border-radius: 10px;
-    padding: 14px 20px;
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-  }
-  .guest-banner-text { font-size: 0.92rem; color: #fff; }
-
-  .polls-header-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 24px;
-  }
-  .section-heading {
-    font-size: 1.6rem;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .create-poll-box {
-    background: var(--dark-card);
-    border: 1px solid var(--border-accent);
-    border-radius: 12px;
-    padding: 24px;
-    margin-bottom: 30px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
-    display: none;
-    animation: fadeIn 0.25s ease;
-  }
-  .create-poll-box.open { display: block; }
-
-  .form-group { margin-bottom: 16px; }
-  .form-group label {
-    display: block;
-    font-size: 0.82rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    color: var(--text-secondary);
-    margin-bottom: 6px;
-  }
-  .form-control {
-    width: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 8px;
-    padding: 10px 14px;
-    color: #fff;
-    font-size: 0.92rem;
-    outline: none;
-    transition: all 0.2s ease;
-  }
-  .form-control:focus {
-    border-color: var(--saffron);
-    box-shadow: 0 0 10px var(--saffron-glow);
-  }
-
-  .poll-options-inputs {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 12px;
-  }
-  .poll-opt-row { display: flex; gap: 8px; }
-  .btn-remove-opt {
-    background: rgba(225, 6, 0, 0.15);
-    border: 1px solid rgba(225, 6, 0, 0.3);
-    color: #ff5252;
-    border-radius: 8px;
-    width: 38px;
-    cursor: pointer;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .btn-remove-opt:hover { background: rgba(225, 6, 0, 0.3); }
-
-  /* Poll Cards */
-  .poll-card {
-    background: var(--dark-card-solid);
-    border: 1px solid var(--border-subtle);
-    border-radius: 12px;
-    padding: 22px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    transition: border-color 0.2s ease;
-  }
-  .poll-card:hover { border-color: rgba(255, 255, 255, 0.16); }
-
-  .poll-top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 16px;
-  }
-  .poll-question {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #fff;
-    line-height: 1.4;
-  }
-  .poll-meta {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    margin-top: 4px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .poll-delete-btn {
-    background: none;
-    border: 1px solid rgba(225, 6, 0, 0.2);
-    color: #ff5252;
-    border-radius: 6px;
-    padding: 4px 10px;
-    font-size: 0.76rem;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .poll-delete-btn:hover { background: var(--f1-red); color: #fff; }
-
-  .poll-options-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .vote-option-btn {
-    position: relative;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 8px;
-    padding: 12px 16px;
-    text-align: left;
-    color: #fff;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .vote-option-btn:hover:not(:disabled) {
-    background: rgba(255, 255, 255, 0.09);
-    border-color: rgba(255, 255, 255, 0.2);
-  }
-  .vote-option-btn:disabled { cursor: default; }
-  .vote-progress-fill {
-    position: absolute;
-    top: 0; bottom: 0; left: 0;
-    background: linear-gradient(90deg, rgba(255, 153, 51, 0.22), rgba(225, 6, 0, 0.22));
-    z-index: 1;
-    transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    border-radius: 7px;
-  }
-  .vote-progress-fill.top-pick {
-    background: linear-gradient(90deg, rgba(255, 153, 51, 0.35), rgba(19, 136, 8, 0.35));
-    border-right: 2px solid var(--saffron);
-  }
-  .vote-opt-content {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 600;
-    font-size: 0.94rem;
-  }
-  .vote-opt-stats {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-  }
-  .voted-badge {
-    background: var(--gold);
-    color: #000;
-    font-size: 0.68rem;
-    font-weight: 800;
-    padding: 2px 7px;
-    border-radius: 4px;
-    text-transform: uppercase;
-  }
-
-  /* Admin View */
-  #view-admin {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem 5rem 1.5rem;
-  }
-
-  .admin-stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-bottom: 28px;
-  }
-  .admin-stat-card {
-    background: var(--dark-card-solid);
-    border: 1px solid var(--border-subtle);
-    border-radius: 12px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-  }
-  .stat-card-title {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-  }
-  .stat-card-number {
-    font-size: 2.2rem;
-    font-weight: 900;
-    color: #fff;
-    margin-top: 6px;
-  }
-  .stat-card-number.saffron { color: var(--saffron); }
-  .stat-card-number.gold { color: var(--gold); }
-  .stat-card-number.green { color: #00e676; }
-
-  .admin-table-card {
-    background: var(--dark-card-solid);
-    border: 1px solid var(--border-subtle);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
-  }
-  .admin-table-header {
-    padding: 16px 22px;
-    border-bottom: 1px solid var(--border-subtle);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .admin-table-title {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #fff;
-  }
-
-  .user-table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-  }
-  .user-table th {
-    padding: 12px 20px;
-    font-size: 0.74rem;
-    font-weight: 700;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    background: rgba(0, 0, 0, 0.25);
-    border-bottom: 1px solid var(--border-subtle);
-  }
-  .user-table td {
-    padding: 14px 20px;
-    font-size: 0.9rem;
-    color: var(--text-primary);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-  }
-  .user-table tr:hover td { background: rgba(255, 255, 255, 0.02); }
-
-  /* Auth Modal */
-  .modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(10px);
-    z-index: 2000;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-  }
-  .modal-overlay.show { display: flex; }
-
-  .modal-card {
-    background: #111117;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 16px;
-    width: 100%;
-    max-width: 440px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
-    position: relative;
-    overflow: hidden;
-    animation: zoomModal 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  @keyframes zoomModal {
-    from { opacity: 0; transform: scale(0.94); }
-    to { opacity: 1; transform: scale(1); }
-  }
-
-  .modal-close-icon {
-    position: absolute;
-    top: 14px; right: 16px;
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    font-size: 1.4rem;
-    cursor: pointer;
-    line-height: 1;
-    z-index: 10;
-    padding: 4px;
-  }
-  .modal-close-icon:hover { color: #fff; }
-
-  .modal-header {
-    padding: 24px 24px 14px 24px;
-    text-align: center;
-  }
-  .modal-logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-size: 1.4rem;
-    font-weight: 900;
-    letter-spacing: 1px;
-    color: #fff;
-  }
-  .modal-subtitle {
-    font-size: 0.82rem;
-    color: var(--text-secondary);
-    margin-top: 4px;
-  }
-
-  /* 3 Modal Tabs */
-  .modal-tabs {
-    display: flex;
-    background: rgba(0, 0, 0, 0.35);
-    border-bottom: 1px solid var(--border-subtle);
-    padding: 0 12px;
-  }
-  .modal-tab-btn {
-    flex: 1;
-    padding: 12px 6px;
-    background: none;
-    border: none;
-    color: var(--text-secondary);
-    font-size: 0.86rem;
-    font-weight: 700;
-    cursor: pointer;
-    border-bottom: 3px solid transparent;
-    transition: all 0.2s ease;
-    text-align: center;
-  }
-  .modal-tab-btn:hover { color: #fff; }
-  .modal-tab-btn.active {
-    color: #fff;
-    border-bottom-color: var(--f1-red);
-  }
-  .modal-tab-btn.tab-admin-highlight.active {
-    color: var(--saffron);
-    border-bottom-color: var(--saffron);
-  }
-
-  .modal-body { padding: 22px 24px 24px 24px; }
-  .modal-form-pane { display: none; }
-  .modal-form-pane.active { display: block; }
-
-  /* Admin Portal Notice Banner */
-  .admin-portal-banner {
-    background: linear-gradient(135deg, rgba(255, 153, 51, 0.18), rgba(225, 6, 0, 0.18));
-    border: 1px solid rgba(255, 153, 51, 0.4);
-    border-radius: 10px;
-    padding: 12px 14px;
-    margin-bottom: 18px;
-    font-size: 0.84rem;
-    color: #fff;
-    line-height: 1.45;
-  }
-  .admin-quick-btn {
-    background: linear-gradient(135deg, #FF9933, #E10600);
-    color: #fff;
-    font-weight: 800;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 14px;
-    width: 100%;
-    cursor: pointer;
-    font-size: 0.88rem;
-    margin-bottom: 14px;
-    box-shadow: 0 0 14px rgba(255, 153, 51, 0.35);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    transition: all 0.2s ease;
-  }
-  .admin-quick-btn:hover {
-    box-shadow: 0 0 20px rgba(255, 153, 51, 0.6);
-    transform: translateY(-1px);
-  }
-
-  .divider-text {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: var(--text-muted);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    margin: 16px 0;
-  }
-  .divider-text::before, .divider-text::after {
-    content: '';
-    flex: 1;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  .divider-text span { padding: 0 10px; }
-
-  .form-alert {
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 0.82rem;
-    margin-bottom: 12px;
-    display: none;
-  }
-  .form-alert.error {
-    background: rgba(225, 6, 0, 0.15);
-    border: 1px solid rgba(225, 6, 0, 0.4);
-    color: #ff6b6b;
-    display: block;
-  }
-  .form-alert.success {
-    background: rgba(19, 136, 8, 0.15);
-    border: 1px solid rgba(19, 136, 8, 0.4);
-    color: #4ade80;
-    display: block;
-  }
-
-  /* Toast Notification */
-  .toast {
-    position: fixed;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%) translateY(100px);
-    background: #1c1c24;
-    color: #fff;
-    padding: 12px 24px;
-    border-radius: 30px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    z-index: 3000;
-    opacity: 0;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    pointer-events: none;
-  }
-  .toast.show {
-    transform: translateX(-50%) translateY(0);
-    opacity: 1;
-  }
-  .toast.success { border-color: #00c853; color: #00e676; }
-  .toast.error { border-color: var(--f1-red); color: #ff5252; }
-
-  @media (max-width: 768px) {
-    nav { padding: 0 1rem; }
-    .brand-title span:not(.f1-badge) { display: none; }
-    .hud-top-left { max-width: 220px; top: 12px; left: 12px; }
-    .telemetry-card { padding: 8px; gap: 6px; }
-    .tele-value { font-size: 0.95rem; }
-    .hud-top-right { top: 12px; right: 12px; }
-    .part-inspection-card { right: 12px; left: 12px; width: auto; bottom: 80px; }
-    .admin-stats-grid { grid-template-columns: 1fr; }
-  }
-</style>
+  <link rel="stylesheet" href="css/style.css?v=20261031_5">
 </head>
 <body>
 
@@ -1050,13 +15,9 @@
 <!-- Top Navigation -->
 <nav>
   <div class="nav-brand" onclick="switchView('car')">
-    <div class="nav-flag">
-      <div class="flag-top"></div>
-      <div class="flag-mid"></div>
-      <div class="flag-bot"></div>
-    </div>
+    <img src="bmu-logo.png" alt="BMU Logo" class="nav-bmu-logo">
     <div class="brand-title">
-      BHARAT <span>F1</span>
+      BMU <span>F1</span>
       <span class="f1-badge">RACING</span>
     </div>
   </div>
@@ -1064,6 +25,13 @@
   <div class="nav-tabs">
     <button class="nav-tab-btn active" id="tab-car" onclick="switchView('car')">
       🏎️ <span>3D Car Model</span>
+    </button>
+    <button class="nav-tab-btn" id="tab-game" onclick="switchView('game')">
+      🎮 <span>Jeddah GP</span>
+    </button>
+    <button class="nav-tab-btn" id="tab-live" onclick="switchView('live')">
+      🔴 <span>Live Stream</span>
+      <span class="live-nav-badge" id="liveNavBadge" style="display:none;">LIVE</span>
     </button>
     <button class="nav-tab-btn" id="tab-polls" onclick="switchView('polls')">
       📊 <span>Polls</span>
@@ -1089,8 +57,8 @@
 
     <!-- HUD Top Left -->
     <div class="hud-top-left">
-      <div class="car-badge-title">BHARAT-24 <span style="font-size:0.9rem; color:var(--saffron);">T-SPEC</span></div>
-      <div class="car-badge-subtitle">FIA Spec 2024 Formula 1 Challenger &bull; Indian Tricolor Livery</div>
+      <div class="car-badge-title" id="carBadgeTitle">BMU-24 <span style="font-size:0.9rem; color:var(--gold);">CHALLENGER</span></div>
+      <div class="car-badge-subtitle" id="carBadgeSubtitle">BML Munjal University &bull; FIA Spec 2024 Formula 1 Aerodynamic Model</div>
 
       <div class="telemetry-card">
         <div class="tele-item">
@@ -1142,7 +110,12 @@
           <span class="part-category" id="partCategory">AERODYNAMICS</span>
           <h3 class="part-title" id="partTitle">Front Wing Assembly</h3>
         </div>
-        <button class="part-close-btn" onclick="closePartCard()">&times;</button>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <button class="btn btn-admin btn-sm" id="btnEditPartCard" onclick="openEditActivePartModal()" style="display:none; padding:4px 10px; font-size:0.8rem;" title="Edit this assembly's specifications (Admin only)">
+            ✏️ Edit Info
+          </button>
+          <button class="part-close-btn" onclick="closePartCard()">&times;</button>
+        </div>
       </div>
       <p class="part-desc" id="partDesc">Multi-element aerodynamic front wing designed to channel turbulent wheel-wake outward while producing maximum front-axle downforce.</p>
       <div class="specs-grid">
@@ -1181,7 +154,7 @@
     </div>
 
     <div class="polls-header-bar">
-      <h2 class="section-heading">🗳️ Bharat F1 Community Polls</h2>
+      <h2 class="section-heading">🗳️ BMU F1 Community Polls</h2>
       <button class="btn btn-admin" id="btnOpenCreatePoll" style="display:none;" onclick="toggleCreatePollBox()">
         + Create New Poll
       </button>
@@ -1193,7 +166,7 @@
       <div class="form-alert error" id="createPollError"></div>
       <div class="form-group">
         <label>Poll Question</label>
-        <input type="text" class="form-control" id="newPollQuestion" placeholder="e.g. Which circuit should host the next Bharat F1 Grand Prix?">
+        <input type="text" class="form-control" id="newPollQuestion" placeholder="e.g. Which circuit should host the next BMU F1 Grand Prix?">
       </div>
       <div class="form-group">
         <label>Options (Minimum 2)</label>
@@ -1218,7 +191,7 @@
     <!-- Polls Container -->
     <div id="pollsListContainer">
       <div style="text-align:center; padding:3rem; color:var(--text-muted);">
-        Loading Bharat F1 polls...
+        Loading BMU F1 polls...
       </div>
     </div>
   </section>
@@ -1244,6 +217,41 @@
     </div>
 
     <!-- User Management Table Card -->
+    <!-- 🔴 Live Stream Quick Controller Card (Admins Only) -->
+    <div class="admin-table-card" style="margin-bottom:24px;">
+      <div class="admin-table-header">
+        <div>
+          <div class="admin-table-title">🔴 Live Stream Broadcast Controller</div>
+          <div style="font-size:0.85rem; color:var(--text-secondary); margin-top:3px;">
+            Full control over the BMU F1 live broadcast feed. Start or stop the stream at any time.
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span class="stream-status-pill offline" id="adminPanelStreamStatus">
+            <span class="pulse-dot"></span>
+            <span id="adminPanelStreamStatusText">OFFLINE</span>
+          </span>
+          <button class="btn btn-gold btn-sm" onclick="switchView('live')">📺 Open Live Studio</button>
+        </div>
+      </div>
+      <div style="padding:16px 20px; background:rgba(255,255,255,0.02); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px;">
+        <div>
+          <div style="font-size:0.95rem; font-weight:700; color:#fff;" id="adminPanelStreamTitle">BMU F1 Trackside Live</div>
+          <div style="font-size:0.82rem; color:var(--text-secondary); margin-top:2px;">
+            Host: <strong id="adminPanelStreamHost" style="color:var(--gold);">Dhruv</strong> &bull; <span id="adminPanelStreamViewers">0</span> active viewers
+          </div>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <button class="btn btn-gold btn-sm" id="btnAdminPanelStartStream" onclick="quickStartStreamFromPanel()">
+            🚀 Start Live Stream
+          </button>
+          <button class="btn btn-red btn-sm" id="btnAdminPanelEndStream" onclick="endLiveStream()" style="display:none;">
+            ⏹️ End Live Stream
+          </button>
+        </div>
+      </div>
+    </div>
+
     <div class="admin-table-card">
       <div class="admin-table-header">
         <div class="admin-table-title">User Roles &amp; Permissions</div>
@@ -1266,7 +274,351 @@
         </table>
       </div>
     </div>
+
+    <!-- 🏎️ Car Specifications & 3D Model Info Manager Card -->
+    <div class="admin-table-card" style="margin-top:24px;">
+      <div class="admin-table-header">
+        <div>
+          <div class="admin-table-title">🏎️ Car Specifications &amp; 3D Model Information</div>
+          <div style="font-size:0.85rem; color:var(--text-muted); margin-top:3px;">
+            Modify technical specifications, descriptions, and HUD vehicle headers. Changes reflect live on the 3D car model for all visitors.
+          </div>
+        </div>
+        <button class="btn btn-gold btn-sm" onclick="openEditVehicleModal()">
+          ✏️ Edit Vehicle Header
+        </button>
+      </div>
+      <div style="overflow-x:auto;">
+        <table class="user-table">
+          <thead>
+            <tr>
+              <th>Assembly / Part</th>
+              <th>Category</th>
+              <th>Engineering Specs Summary</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="adminCarSpecsTbody">
+            <tr><td colspan="4" style="text-align:center; padding:2rem; color:var(--text-muted);">Loading car specifications...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </section>
+
+
+
+  <!-- VIEW 4: Live Stream & Pit Wall Commentary -->
+  <section class="view-pane" id="view-live">
+    <!-- Admin Broadcast Studio Control Bar (Admins Only) -->
+    <div class="admin-live-studio" id="adminLiveStudio" style="display:none;">
+      <div class="studio-header">
+        <div class="studio-title">
+          <span class="studio-badge">👑 ADMIN BROADCAST STUDIO</span>
+          <span>Manage Live Stream &amp; Broadcast Feed</span>
+        </div>
+        <div class="studio-actions">
+          <button class="btn btn-red btn-sm" id="btnAdminEndStream" onclick="endLiveStream()" style="display:none;">
+            ⏹️ End Broadcast
+          </button>
+          <button class="btn btn-ghost btn-sm" onclick="clearLiveChatPrompt()">
+            🧹 Clear Chat
+          </button>
+        </div>
+      </div>
+      <div class="studio-controls-row">
+        <div class="studio-field">
+          <label>Stream Title</label>
+          <input type="text" class="form-control form-control-sm" id="liveStreamTitleInput" value="BMU F1 Trackside Live &amp; Telemetry Review" placeholder="Stream Title...">
+        </div>
+        <div class="studio-field">
+          <label>Broadcast Source</label>
+          <select class="form-control form-control-sm" id="liveStreamSourceSelect" onchange="handleStreamSourceChange()">
+            <option value="camera">📹 Webcam &amp; Microphone</option>
+            <option value="screen">🖥️ Screen Share (Sim Racing / Telemetry)</option>
+            <option value="url">🔗 External Stream URL (YouTube / Twitch / MP4)</option>
+          </select>
+        </div>
+        <div class="studio-field" id="liveStreamUrlField" style="display:none; flex:2;">
+          <label>Stream / Video URL</label>
+          <input type="text" class="form-control form-control-sm" id="liveStreamUrlInput" placeholder="https://www.youtube.com/embed/... or MP4 video URL">
+        </div>
+        <div class="studio-btn-wrap">
+          <button class="btn btn-gold btn-sm" id="btnAdminStartStream" onclick="startLiveStream()">
+            🚀 Go Live Now
+          </button>
+          <button class="btn btn-red btn-sm" id="btnAdminEndStreamRow" onclick="endLiveStream()" style="display:none; font-weight:700;">
+            ⏹️ End Broadcast
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Live Content Grid -->
+    <div class="live-grid-container">
+      <!-- Left Side: Player & Info -->
+      <div class="live-main-column">
+        <div class="live-player-card">
+          <div class="player-wrapper" id="livePlayerWrapper">
+            <!-- Stream Top Overlay -->
+            <div class="player-overlay-top">
+              <div class="stream-status-pill offline" id="streamStatusPill">
+                <span class="pulse-dot"></span>
+                <span id="streamStatusText">OFFLINE</span>
+              </div>
+              <div class="stream-viewers-pill" id="streamViewersPill">
+                👥 <span id="streamViewerCount">1</span> Viewer
+              </div>
+              <button class="btn btn-red btn-sm" id="btnOverlayEndStream" onclick="endLiveStream()" style="display:none; font-weight:700; padding:4px 14px; margin-left:auto; z-index:25; box-shadow:0 0 12px rgba(225,6,0,0.6); cursor:pointer;">
+                ⏹️ Stop Stream
+              </button>
+            </div>
+
+                        <!-- Live Stream On-Screen Source Switcher HUD for Admins -->
+            <div class="player-source-switcher" id="playerSourceSwitcher" style="display:none;">
+              <span style="font-size:0.75rem; color:var(--gold); font-weight:700;">SOURCE:</span>
+              <button class="switcher-btn active" id="btnSwitchCamera" onclick="switchActiveSource('camera')">📹 Camera</button>
+              <button class="switcher-btn" id="btnSwitchScreen" onclick="switchActiveSource('screen')">🖥️ Screen Share</button>
+              <button class="switcher-btn" id="btnHudEndStream" onclick="endLiveStream()" style="background:#E10600; color:#fff; border-color:#ff4444; font-weight:700; cursor:pointer;">⏹️ Stop Broadcast</button>
+            </div>
+
+            <!-- Active Video Elements -->
+            <video id="liveVideoPlayer" autoplay playsinline muted style="display:none; width:100%; height:100%; object-fit:cover; background:#000; z-index:15;"></video>
+            <img id="liveStreamFeedImg" style="display:none; width:100%; height:100%; object-fit:contain; background:#000;" alt="Live Camera Stream">
+            <iframe id="liveIframePlayer" style="display:none; width:100%; height:100%; border:none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+            <!-- Offline Standby Placeholder -->
+            <div class="player-offline-standby" id="playerOfflineStandby">
+              <div class="standby-icon">🏎️</div>
+              <div class="standby-title">BMU F1 Broadcast Centre</div>
+              <p class="standby-subtitle" id="standbySubtitle">
+                The stream is currently offline. Administrator <strong>Dhruv</strong> has not started broadcasting yet.
+              </p>
+              <div class="standby-notice">
+                Stay tuned for live qualifying telemetry, aerodynamic debriefs, and sim racing sessions.
+              </div>
+              <div style="display:flex; gap:10px; margin-top:16px; flex-wrap:wrap; justify-content:center;">
+                <button class="btn btn-gold btn-sm" id="btnStandbyGoLive" onclick="startLiveStream()" style="display:none; font-weight:700;">
+                  📹 Turn On Camera &amp; Go Live
+                </button>
+                <button class="btn btn-ghost btn-sm" onclick="checkLiveStatus(true)">
+                  🔄 Refresh Status
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stream Metadata Bar -->
+          <div class="stream-info-bar">
+            <div class="stream-title-section">
+              <h2 class="stream-title" id="streamTitleDisplay">BMU F1 Official Trackside &amp; Pit Wall Live</h2>
+              <div class="stream-meta">
+                <span class="host-badge">👑 Hosted by <strong id="streamHostName">Dhruv (Root Admin)</strong></span>
+                <span class="stream-dot-sep">&bull;</span>
+                <span class="stream-time" id="streamStartedTime">Offline</span>
+              </div>
+            </div>
+            <div class="stream-badge-section" style="display:flex; align-items:center; gap:10px;">
+              <button class="btn btn-red btn-sm" id="btnMetaEndStream" onclick="endLiveStream()" style="display:none; font-weight:700; cursor:pointer;">
+                ⏹️ End Live Broadcast
+              </button>
+              <span class="f1-live-tag">FIA SPEC 2024</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side: Live Commentary & Chat Panel -->
+      <div class="live-chat-column">
+        <div class="live-chat-card">
+          <div class="chat-header">
+            <div class="chat-header-title">
+              <span>💬 Pit Wall Commentary</span>
+              <span class="chat-count-badge" id="chatCountBadge">0 messages</span>
+            </div>
+            <button class="chat-refresh-btn" onclick="loadLiveComments()" title="Refresh messages">🔄</button>
+          </div>
+
+          <!-- Messages Container -->
+          <div class="chat-messages-container" id="chatMessagesContainer">
+            <div class="chat-empty-state" id="chatEmptyState">
+              🏎️ Welcome to the Pit Wall Live Chat! Be the first to join the conversation.
+            </div>
+          </div>
+
+          <!-- Chat Input Area -->
+          <div class="chat-input-wrapper">
+            <!-- Quick F1 Reactions -->
+            <div class="chat-quick-reactions">
+              <button type="button" class="reaction-chip" onclick="quickSendReaction('🏎️')">🏎️</button>
+              <button type="button" class="reaction-chip" onclick="quickSendReaction('🔥')">🔥</button>
+              <button type="button" class="reaction-chip" onclick="quickSendReaction('🏁')">🏁</button>
+              <button type="button" class="reaction-chip" onclick="quickSendReaction('🏆')">🏆</button>
+              <button type="button" class="reaction-chip" onclick="quickSendReaction('⚡')">⚡</button>
+              <button type="button" class="reaction-chip" onclick="quickSendReaction('👏')">👏</button>
+            </div>
+
+            <!-- Form for Logged In Users -->
+            <form id="liveChatForm" class="chat-form" onsubmit="submitLiveComment(event)" style="display:none;">
+              <input type="text" class="chat-input" id="liveCommentInput" placeholder="Join the live commentary..." maxlength="500" autocomplete="off">
+              <button type="submit" class="btn btn-red btn-sm chat-send-btn" id="btnSendComment">
+                <span>Send</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+              </button>
+            </form>
+
+            <!-- Guest Locked Banner (When NOT logged in) -->
+            <div id="liveChatGuestPrompt" class="chat-guest-prompt">
+              <div class="guest-prompt-icon">🔒</div>
+              <div class="guest-prompt-text">
+                <strong>Members Only:</strong> Only logged-in members can comment in the live chat.
+              </div>
+              <button class="btn btn-admin btn-sm" onclick="openAuthModal('login')">
+                Log In to Comment
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIEW 5: Jeddah GP First-Person Racing Game -->
+  <section class="view-pane" id="view-game">
+    <!-- Game Control Top Bar -->
+    <div class="game-top-bar">
+      <div class="game-track-title">
+        <div class="game-title-text">🏁 JEDDAH CORNICHE CIRCUIT</div>
+        <div class="game-title-sub">
+          <span>Saudi Arabia</span> &bull; 
+          <span style="color:var(--gold);">Night Street GP</span> &bull; 
+          <span>Length: 6.174 KM</span> &bull; 
+          <span style="color:#00E5FF;">Top Speed: 350+ KM/H</span>
+        </div>
+      </div>
+
+      <div class="game-actions-bar">
+        <button class="btn btn-gold btn-sm" onclick="openGarageModal()">
+          🔧 Garage &amp; Upgrades
+        </button>
+        <button class="btn btn-ghost btn-sm" id="btnGameAudioToggle" onclick="toggleGameAudio()" style="font-weight:700;">
+          🔊 Sound: ON
+        </button>
+        <button class="btn btn-ghost btn-sm" onclick="resetCarOnTrack()">
+          🔄 Reset Car (R)
+        </button>
+      </div>
+    </div>
+
+    <!-- 3D Game Viewport -->
+    <div class="game-viewport-card">
+      <div id="game-canvas-container"></div>
+      <canvas id="gameMinimapCanvas" width="140" height="140" class="game-minimap-radar"></canvas>
+
+      <!-- F1 Broadcast Live Timing Tower (Left side) -->
+      <div class="f1-timing-tower" id="hudTimingTower">
+        <div class="tower-header">JEDDAH GP &bull; LAP 1/1</div>
+        <div class="tower-driver" id="towerRow1"><span class="t-pos" id="tPos1">1</span> <span class="t-team ferrari"></span> <span class="t-name" id="tName1">LEC</span> <span class="t-gap" id="tGap1">LEADER</span></div>
+        <div class="tower-driver" id="towerRow2"><span class="t-pos" id="tPos2">2</span> <span class="t-team mercedes"></span> <span class="t-name" id="tName2">HAM</span> <span class="t-gap" id="tGap2">+0.8s</span></div>
+        <div class="tower-driver" id="towerRow3"><span class="t-pos" id="tPos3">3</span> <span class="t-team mclaren"></span> <span class="t-name" id="tName3">NOR</span> <span class="t-gap" id="tGap3">+1.4s</span></div>
+        <div class="tower-driver player" id="towerRow4"><span class="t-pos" id="tPos4">4</span> <span class="t-team bmu"></span> <span class="t-name" id="tName4">YOU</span> <span class="t-gap" id="tGap4">+2.1s</span></div>
+      </div>
+
+      <!-- Live Dynamic Overtake Banner -->
+      <div class="f1-overtake-banner" id="hudOvertakeBanner" style="display:none;">
+        ⚡ OVERTAKE! <span id="overtakeOldPos">P4</span> ➔ <span id="overtakeNewPos">P3</span>
+      </div>
+
+      <!-- Slipstream Aerodynamic Boost Badge -->
+      <div class="f1-slipstream-badge" id="hudSlipstreamBadge" style="display:none;">
+        💨 SLIPSTREAM ACTIVE &bull; +15 KM/H BOOST
+      </div>
+
+      <!-- FIA 5-Red-Lights Start Sequence Overlay (Car never starts on its own!) -->
+      <div class="f1-start-gantry-overlay" id="hudStartGantryOverlay" onclick="if (event.target.id === 'hudStartGantryOverlay' || event.target.id === 'btnStartRace') launchRace()">
+        <div class="gantry-pod">
+          <div class="gantry-lights">
+            <div class="g-light"><div class="g-bulb" id="gBulb1"></div></div>
+            <div class="g-light"><div class="g-bulb" id="gBulb2"></div></div>
+            <div class="g-light"><div class="g-bulb" id="gBulb3"></div></div>
+            <div class="g-light"><div class="g-bulb" id="gBulb4"></div></div>
+            <div class="g-light"><div class="g-bulb" id="gBulb5"></div></div>
+          </div>
+          <div class="gantry-message" id="gantryMessage">JEDDAH CORNICHE GP &bull; PRESS 'W' OR CLICK TO LAUNCH!</div>
+        </div>
+        <button class="btn btn-gold btn-lg gantry-start-btn" id="btnStartRace" onclick="launchRace()">
+          🏎️ LAUNCH RACE (PRESS W / ENTER)
+        </button>
+      </div>
+
+      <!-- Top HUD Overlay -->
+      <div class="game-hud-top">
+        <div class="game-timing-box">
+          <div class="timing-label">LAP TIME</div>
+          <div class="timing-value" id="hudLapTimeValue">00:00.000</div>
+        </div>
+        <div class="game-drs-box">
+          <span class="drs-badge off" id="hudDrsBadge">DRS UNAVAILABLE</span>
+        </div>
+        <div class="game-speed-box">
+          <div class="speed-main">
+            <span class="speed-num" id="hudSpeedValue">0</span>
+            <span class="speed-unit">KM/H</span>
+          </div>
+          <div class="gear-sub">
+            GEAR <strong id="hudGearValue" style="color:var(--gold); font-size:1.4rem;">1</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom HUD Quick Guide Controls Pill -->
+      <div class="game-hud-controls">
+        <span class="ctrl-key">W / ↑</span> Accel &bull; 
+        <span class="ctrl-key">S / ↓</span> Brake &bull; 
+        <span class="ctrl-key">A / D</span> Steer &bull; 
+        <span class="ctrl-key">SPACE</span> DRS &bull; 
+        <span class="ctrl-key">C</span> Cam POV &bull; 
+        <span class="ctrl-key">R</span> Reset
+      </div>
+    </div>
+
+    <!-- Leaderboard Card below game canvas -->
+    <div class="admin-table-card" style="margin-top:24px;">
+      <div class="admin-table-header">
+        <div>
+          <div class="admin-table-title">🏆 Jeddah Corniche Official Lap Records Leaderboard</div>
+          <div style="font-size:0.85rem; color:var(--text-secondary); margin-top:3px;">
+            Personal Records (PR) of every participant on the Saudi Arabian street circuit.
+          </div>
+        </div>
+        <div style="display:flex; gap:8px; align-items:center;">
+          <button class="btn btn-sm btn-gold" id="btnLeaderboardPR" onclick="switchLeaderboardMode(true)">👑 Driver Best (PR)</button>
+          <button class="btn btn-sm btn-ghost" id="btnLeaderboardAll" onclick="switchLeaderboardMode(false)">📜 All Laps</button>
+          <button class="btn btn-ghost btn-sm" onclick="loadGameLeaderboard()">🔄</button>
+        </div>
+      </div>
+      <div style="overflow-x:auto;">
+        <table class="user-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Driver</th>
+              <th>Best Lap Time (PR)</th>
+              <th>Top Speed</th>
+              <th>Power Unit</th>
+              <th>Brakes</th>
+              <th>Tyre</th>
+              <th>Downforce</th>
+            </tr>
+          </thead>
+          <tbody id="gameLeaderboardTbody">
+            <tr><td colspan="6" style="text-align:center; padding:1.5rem; color:var(--text-muted);">Loading leaderboard...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
 </div>
 
 <!-- Authentication Modal with 3 Tabs -->
@@ -1276,14 +628,10 @@
     
     <div class="modal-header">
       <div class="modal-logo">
-        <div class="nav-flag" style="width:24px;height:16px;">
-          <div class="flag-top"></div>
-          <div class="flag-mid"></div>
-          <div class="flag-bot"></div>
-        </div>
-        BHARAT <span>F1</span>
+        <img src="bmu-logo.png" alt="BMU Logo" style="height:32px; width:auto; vertical-align:middle; margin-right:8px; filter:drop-shadow(0 0 6px rgba(245,166,35,0.4));">
+        BMU <span>F1</span>
       </div>
-      <div class="modal-subtitle">University Racing Team &bull; Authentication Portal</div>
+      <div class="modal-subtitle">BML Munjal University Racing Team &bull; Authentication Portal</div>
     </div>
 
     <div class="modal-tabs">
@@ -1302,16 +650,9 @@
       <!-- TAB 1: 👑 Admin Login -->
       <div class="modal-form-pane" id="paneAdmin">
         <div class="admin-portal-banner">
-          <strong>👑 Administrator Portal</strong><br>
-          Pre-configured Root Administrator: <strong>AhlawatDhruv</strong> (or <strong>Dhruv</strong>)<br>
-          Password: <code>@01</code>
+          <strong>👑 Main Administrator Portal</strong><br>
+          Team Administrator access only. Enter authorized credentials below.
         </div>
-        
-        <button type="button" class="admin-quick-btn" onclick="quickAdminLogin()">
-          ⚡ 1-Click Administrator Login (AhlawatDhruv / @01)
-        </button>
-
-        <div class="divider-text"><span>or enter admin credentials</span></div>
 
         <div class="form-alert error" id="adminError"></div>
         <div class="form-group">
@@ -1378,1671 +719,305 @@
   </div>
 </div>
 
+<!-- Modal for Editing Car Part Specs (Admin Only) -->
+<div class="modal-overlay" id="editPartModal">
+  <div class="modal-card" style="max-width:540px;">
+    <button class="modal-close-icon" onclick="closeEditPartModal()">&times;</button>
+    <div class="modal-header">
+      <div class="modal-logo">
+        <img src="bmu-logo.png" alt="BMU Logo" style="height:32px; width:auto; vertical-align:middle; margin-right:8px; filter:drop-shadow(0 0 6px rgba(245,166,35,0.4));">
+        BMU <span>F1</span>
+      </div>
+      <div class="modal-subtitle" id="editPartModalSubtitle">Edit Assembly Specifications</div>
+    </div>
+
+    <div style="margin-top:16px;">
+      <input type="hidden" id="editPartId">
+
+      <div class="form-group">
+        <label>Assembly Title</label>
+        <input type="text" class="form-control" id="editPartTitle" required>
+      </div>
+
+      <div class="form-group">
+        <label>Category</label>
+        <input type="text" class="form-control" id="editPartCategory" placeholder="e.g. AERODYNAMICS, PROPULSION">
+      </div>
+
+      <div class="form-group">
+        <label>Engineering Description</label>
+        <textarea class="form-control" id="editPartDesc" rows="3" style="resize:vertical;"></textarea>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <div class="form-group">
+          <label>Downforce / Aero Load</label>
+          <input type="text" class="form-control" id="editPartDownforce" placeholder="e.g. 850 kg @ 300 km/h">
+        </div>
+        <div class="form-group">
+          <label>Assembly Weight</label>
+          <input type="text" class="form-control" id="editPartWeight" placeholder="e.g. 11.2 kg">
+        </div>
+        <div class="form-group">
+          <label>Operating Temperature</label>
+          <input type="text" class="form-control" id="editPartTemp" placeholder="e.g. 35°C ambient">
+        </div>
+        <div class="form-group">
+          <label>Power / Load Rating</label>
+          <input type="text" class="form-control" id="editPartPower" placeholder="e.g. 4,200 N peak load">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Material Composition</label>
+        <input type="text" class="form-control" id="editPartMaterial" placeholder="e.g. Torayca T1000 Carbon Fibre &amp; Titanium">
+      </div>
+
+      <div style="display:flex; gap:10px; margin-top:20px;">
+        <button class="btn btn-gold btn-full" id="btnSavePartSpecs" onclick="savePartSpecs()">💾 Save Specifications</button>
+        <button class="btn btn-ghost" onclick="closeEditPartModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for Editing Vehicle Information (Admin Only) -->
+<div class="modal-overlay" id="editVehicleModal">
+  <div class="modal-card" style="max-width:480px;">
+    <button class="modal-close-icon" onclick="closeEditVehicleModal()">&times;</button>
+    <div class="modal-header">
+      <div class="modal-logo">
+        <img src="bmu-logo.png" alt="BMU Logo" style="height:32px; width:auto; vertical-align:middle; margin-right:8px; filter:drop-shadow(0 0 6px rgba(245,166,35,0.4));">
+        BMU <span>F1</span>
+      </div>
+      <div class="modal-subtitle">Edit Vehicle Name &amp; HUD Subtitle</div>
+    </div>
+
+    <div style="margin-top:16px;">
+      <div class="form-group">
+        <label>Vehicle Badge Title</label>
+        <input type="text" class="form-control" id="editVehicleTitle" placeholder="e.g. BMU-24 CHALLENGER">
+      </div>
+      <div class="form-group">
+        <label>Vehicle Subtitle / Model Info</label>
+        <input type="text" class="form-control" id="editVehicleSubtitle" placeholder="e.g. BML Munjal University • FIA Spec 2024 Formula 1 Aerodynamic Model">
+      </div>
+
+      <div style="display:flex; gap:10px; margin-top:20px;">
+        <button class="btn btn-gold btn-full" id="btnSaveVehicleInfo" onclick="saveVehicleInfo()">💾 Save Vehicle Header</button>
+        <button class="btn btn-ghost" onclick="closeEditVehicleModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Garage & Upgrades Modal -->
+<div class="modal-overlay" id="garageModal">
+  <div class="modal-card" style="max-width:640px; max-height:90vh; overflow-y:auto;">
+    <button class="modal-close-icon" onclick="closeGarageModal()">&times;</button>
+    <div class="modal-header">
+      <div class="modal-logo">
+        <span style="font-size:1.8rem; margin-right:8px;">🔧</span>
+        BMU <span>F1 GARAGE &amp; TUNING</span>
+      </div>
+      <div class="modal-subtitle">Fine-Tune Powertrain, Brakes, Aero, Gearbox &amp; Suspension — Sliders Dynamically Affect Each Other</div>
+    </div>
+
+    <div class="modal-body" style="padding-top:10px;">
+      <!-- Interactive Auto-Balance Linking Bar -->
+      <div style="background:rgba(255,153,51,0.12); border:1px solid rgba(255,153,51,0.3); border-radius:8px; padding:10px 14px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <strong style="color:var(--saffron); font-size:0.9rem;">🔗 Dynamic Slider Interlinking</strong>
+          <div style="font-size:0.75rem; color:var(--text-muted);">Adjusting one slider dynamically balances &amp; tunes connected systems</div>
+        </div>
+        <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-size:0.85rem; font-weight:700; margin:0;">
+          <input type="checkbox" id="garageAutoLinkCheck" checked onchange="updateGarageInterlinkedStats()" style="accent-color:var(--saffron); width:18px; height:18px;">
+          <span>LINKED</span>
+        </label>
+      </div>
+
+      <!-- 1. Engine Horsepower Slider -->
+      <div class="form-group" style="margin-bottom:14px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+          <label style="margin:0; font-weight:700;">⚡ Engine Horsepower (V6 Turbo ICE)</label>
+          <span id="hpDisplayVal" style="color:var(--saffron); font-weight:700; font-family:monospace; font-size:1.05rem;">980 BHP</span>
+        </div>
+        <input type="range" class="form-range" id="garageHpInput" min="750" max="1100" step="10" value="980" oninput="onGarageSliderChange('hp')">
+        <div style="display:flex; justify-content:space-between; font-size:0.72rem; color:var(--text-muted); margin-top:2px;">
+          <span>750 BHP (Fuel Saver)</span>
+          <span>1,100 BHP (Monster Boost ⚡ Auto-Scales Brakes)</span>
+        </div>
+      </div>
+
+      <!-- 2. Brake Power Slider -->
+      <div class="form-group" style="margin-bottom:14px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+          <label style="margin:0; font-weight:700;">🛑 Brake Power &amp; Calipers</label>
+          <span id="bpDisplayVal" style="color:#00E5FF; font-weight:700; font-family:monospace; font-size:1.05rem;">75% (4.8G)</span>
+        </div>
+        <input type="range" class="form-range" id="garageBpInput" min="40" max="100" step="5" value="75" oninput="onGarageSliderChange('bp')">
+        <div style="display:flex; justify-content:space-between; font-size:0.72rem; color:var(--text-muted); margin-top:2px;">
+          <span>40% Light Braking</span>
+          <span>100% Carbon-Ceramic Brembo (Aggressive Decel)</span>
+        </div>
+      </div>
+
+      <!-- 3. Aerodynamic Downforce Slider -->
+      <div class="form-group" style="margin-bottom:14px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+          <label style="margin:0; font-weight:700;">🌀 Aerodynamic Downforce (Wings)</label>
+          <span id="dfDisplayVal" style="color:var(--gold); font-weight:700; font-family:monospace; font-size:1.05rem;">50%</span>
+        </div>
+        <input type="range" class="form-range" id="garageDfInput" min="10" max="100" step="5" value="50" oninput="onGarageSliderChange('df')">
+        <div style="display:flex; justify-content:space-between; font-size:0.72rem; color:var(--text-muted); margin-top:2px;">
+          <span>10% Low Drag (355+ KM/H)</span>
+          <span>100% High Downforce (Apex Cornering 🌀 Tunes Gearing)</span>
+        </div>
+      </div>
+
+      <!-- 4. Gearbox Final Drive Ratio Slider -->
+      <div class="form-group" style="margin-bottom:14px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+          <label style="margin:0; font-weight:700;">⚙️ Gearbox Final Drive Ratio</label>
+          <span id="gearDisplayVal" style="color:#A78BFA; font-weight:700; font-family:monospace; font-size:1.05rem;">3.80:1</span>
+        </div>
+        <input type="range" class="form-range" id="garageGearRatioInput" min="3.0" max="4.8" step="0.1" value="3.8" oninput="onGarageSliderChange('gear')">
+        <div style="display:flex; justify-content:space-between; font-size:0.72rem; color:var(--text-muted); margin-top:2px;">
+          <span>3.0 (Long Gearing - Maximum V-Max)</span>
+          <span>4.8 (Short Gearing - Explosive Acceleration)</span>
+        </div>
+      </div>
+
+      <!-- 5. Suspension Stiffness Slider -->
+      <div class="form-group" style="margin-bottom:14px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+          <label style="margin:0; font-weight:700;">🏎️ Suspension &amp; Anti-Roll Stiffness</label>
+          <span id="suspDisplayVal" style="color:#34D399; font-weight:700; font-family:monospace; font-size:1.05rem;">65%</span>
+        </div>
+        <input type="range" class="form-range" id="garageSuspInput" min="30" max="100" step="5" value="65" oninput="onGarageSliderChange('susp')">
+        <div style="display:flex; justify-content:space-between; font-size:0.72rem; color:var(--text-muted); margin-top:2px;">
+          <span>Soft (Smooth Kerb Riding)</span>
+          <span>Stiff (Ultra-Responsive Apex Turn-In)</span>
+        </div>
+      </div>
+
+      <!-- 6. ERS Electric Deployment Slider -->
+      <div class="form-group" style="margin-bottom:14px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+          <label style="margin:0; font-weight:700;">🔋 ERS MGU-K Hybrid Boost</label>
+          <span id="ersDisplayVal" style="color:#38BDF8; font-weight:700; font-family:monospace; font-size:1.05rem;">120 kW (+163 BHP)</span>
+        </div>
+        <input type="range" class="form-range" id="garageErsInput" min="50" max="180" step="10" value="120" oninput="onGarageSliderChange('ers')">
+        <div style="display:flex; justify-content:space-between; font-size:0.72rem; color:var(--text-muted); margin-top:2px;">
+          <span>50 kW (Eco Cruise)</span>
+          <span>180 kW (Hot Lap Qualifying Deployment)</span>
+        </div>
+      </div>
+
+      <!-- 7. Tyre Compound -->
+      <div class="form-group" style="margin-bottom:16px;">
+        <label style="font-weight:700;">🔴 Pirelli Tyre Compound</label>
+        <select class="form-control" id="garageTyreSelect" onchange="updateGarageInterlinkedStats()">
+          <option value="soft">🔴 Soft (C4) - Maximum Cornering Grip (+15%)</option>
+          <option value="medium" selected>🟡 Medium (C3) - Balanced High-Speed Stability</option>
+          <option value="hard">⚪ Hard (C2) - Low Rolling Resistance (+5 KM/H Top Speed)</option>
+        </select>
+      </div>
+
+      <!-- Interlinked Real-Time Performance Matrix Card -->
+      <div class="garage-telemetry-matrix">
+        <div class="matrix-title">📊 Calculated Vehicle Telemetry &amp; Physics Impact</div>
+        <div class="matrix-grid">
+          <div class="matrix-item">
+            <div class="m-label">EST. TOP SPEED</div>
+            <div class="m-val" id="statCalcTopSpeed">348 KM/H</div>
+          </div>
+          <div class="matrix-item">
+            <div class="m-label">0-200 ACCEL</div>
+            <div class="m-val" id="statCalcAccel">4.2s</div>
+          </div>
+          <div class="matrix-item">
+            <div class="m-label">300-0 BRAKING</div>
+            <div class="m-val" id="statCalcBraking">98m</div>
+          </div>
+          <div class="matrix-item">
+            <div class="m-label">CORNERING GRIP</div>
+            <div class="m-val" id="statCalcGrip">4.8 G</div>
+          </div>
+        </div>
+        <div class="matrix-warning" id="garageBalanceWarning" style="display:none;"></div>
+      </div>
+
+      <div style="display:flex; gap:10px; margin-top:20px;">
+        <button class="btn btn-gold btn-full" onclick="saveUserGarageSetup()">
+          💾 Save &amp; Apply Setup
+        </button>
+        <button class="btn btn-ghost" onclick="closeGarageModal()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- One Lap Complete / Score Modal -->
+<div class="modal-overlay" id="raceFinishModal">
+  <div class="modal-card race-finish-card">
+    <div class="finish-flag-banner">🏁 LAP COMPLETED! 🏁</div>
+    <div class="modal-header" style="text-align:center; border:none; padding-bottom:4px;">
+      <div class="modal-logo" style="justify-content:center;">
+        JEDDAH CORNICHE <span>CIRCUIT</span>
+      </div>
+      <div class="modal-subtitle" id="finishSubTitle">Official 1-Lap Time Trial Finished</div>
+    </div>
+    <div class="finish-score-box">
+      <div class="finish-lap-label">OFFICIAL LAP TIME</div>
+      <div class="finish-lap-time" id="finishLapTimeVal">01:28.450</div>
+      <div class="finish-badge-row">
+        <span class="finish-rank-badge" id="finishRankBadge">👑 P1 - CIRCUIT RECORD</span>
+        <span class="finish-pr-badge" id="finishPrBadge" style="display:none;">⭐ NEW PERSONAL RECORD!</span>
+      </div>
+    </div>
+    <div class="finish-stats-grid">
+      <div class="finish-stat-card">
+        <div class="stat-num" id="finishTopSpeed">348 KM/H</div>
+        <div class="stat-name">Top Speed</div>
+      </div>
+      <div class="finish-stat-card">
+        <div class="stat-num" id="finishAvgSpeed">254 KM/H</div>
+        <div class="stat-name">Average Speed</div>
+      </div>
+      <div class="finish-stat-card">
+        <div class="stat-num" id="finishPowerStat">980 BHP</div>
+        <div class="stat-name">Engine Power</div>
+      </div>
+      <div class="finish-stat-card">
+        <div class="stat-num" id="finishTyreStat">🔴 SOFT</div>
+        <div class="stat-name">Pirelli Tyre</div>
+      </div>
+    </div>
+    <div style="display:flex; gap:12px; margin-top:20px;">
+      <button class="btn btn-gold btn-full" onclick="restartRaceLap()">
+        🏎️ Race Another Lap
+      </button>
+      <button class="btn btn-ghost" onclick="closeFinishModalAndOpenGarage()">
+        🔧 Tune in Garage
+      </button>
+      <button class="btn btn-ghost" onclick="closeFinishModal()">
+        Close
+      </button>
+    </div>
+  </div>
+</div>
+
 <!-- Toast Notification -->
 <div class="toast" id="toast">Notification</div>
 
 <!-- Scripts: Local Three.js & OrbitControls -->
-<script src="three.min.js"></script>
-<script src="OrbitControls.js"></script>
-
-<script>
-/* ==========================================================================
-   BHARAT F1 - 3D FORMULA 1 CAR SCENE & APPLICATION ENGINE
-   ========================================================================== */
-
-let scene, camera, renderer, controls;
-let carGroup, wheels = [];
-let interactiveMeshes = [];
-let trackLinesGroup, exhaustSparks;
-let isRacing = false;
-let autoRotateActive = false;
-let currentSpeed = 0, currentRpm = 0;
-let baseCarY = 0.55;
-let raycaster = new THREE.Raycaster();
-let mouse = new THREE.Vector2();
-
-// Web Audio API Procedural F1 V6 Hybrid Engine Sound
-let audioCtx = null;
-let engineOsc1 = null, engineOsc2 = null, engineGain = null, engineFilter = null;
-
-// User Session State
-let currentUser = null;
-
-// Part Engineering Specs Dictionary
-const PARTS_DATA = {
-  'front-wing': {
-    title: 'Front Wing Assembly',
-    category: 'AERODYNAMICS',
-    desc: 'Multi-element carbon-composite front wing generating up to 38% of total front-axle downforce. Features adjustable trailing flaps in Indian tricolor livery, sculpted endplates with outwash vortex channels, and titanium leading-edge skid protectors.',
-    specs: {
-      downforce: '850 kg @ 300 km/h',
-      weight: '11.2 kg',
-      temp: '35°C ambient',
-      power: '4,200 N peak aerodynamic load',
-      material: 'Torayca T1000 Carbon Fibre & Titanium'
-    }
-  },
-  'tyre-front': {
-    title: 'Front Wheels & Pirelli Slicks',
-    category: 'TYRES & BRAKES',
-    desc: '18-inch low-profile Pirelli P-Zero racing slicks on forged BBS magnesium-alloy gold rims. Fitted with carbon-ceramic brake discs capable of decelerating the car from 300 to 100 km/h in just 1.8 seconds with 5.2G peak deceleration force.',
-    specs: {
-      downforce: 'Front Axle Load: 650 kg',
-      weight: '10.8 kg per wheel',
-      temp: 'Operating window: 95°C - 105°C',
-      power: 'Braking power: 1,200 kW thermal',
-      material: 'Synthetic Elastomer & Forged Magnesium'
-    }
-  },
-  'cockpit': {
-    title: 'Cockpit & Titanium Halo',
-    category: 'SAFETY & CHASSIS',
-    desc: 'Moulded carbon monocoque survival cell tested to FIA 8860 standards. Features the Grade 5 Titanium Halo head protection structure capable of supporting a 125 kN static load (equivalent to two double-decker buses) and custom driver helmet in Indian livery.',
-    specs: {
-      downforce: '-12 kg (neutral drag profile)',
-      weight: 'Halo: 7.0 kg | Monocoque: 42 kg',
-      temp: 'Cockpit internal: 48°C',
-      power: '125 kN FIA impact load rating',
-      material: 'Grade 5 Aerospace Titanium & Zylon'
-    }
-  },
-  'sidepods': {
-    title: 'Sculpted Sidepods & Inlets',
-    category: 'AERODYNAMICS & COOLING',
-    desc: 'Aggressively sculpted aerodynamic sidepods featuring deep undercut channels to direct high-energy airflow toward the rear diffuser. High-efficiency aluminum core heat exchangers cool both the turbocharged ICE and hybrid ERS batteries.',
-    specs: {
-      downforce: '320 kg aerodynamic suction',
-      weight: '14.5 kg combined',
-      temp: 'Radiator: 115°C water / 140°C oil',
-      power: 'Heat rejection: 45 kW thermal',
-      material: 'Pre-preg Carbon & Aluminium Core'
-    }
-  },
-  'engine': {
-    title: 'Hybrid Power Unit & Shark Fin',
-    category: 'PROPULSION',
-    desc: 'Bharat 1.6-litre 90-degree V6 Turbocharged Internal Combustion Engine paired with MGU-K kinetic motor (120 kW) and MGU-H heat energy motor. Features the aerodynamic shark fin with Indian tricolor & Ashoka Chakra emblem for yaw stability.',
-    specs: {
-      downforce: 'Low center-of-gravity ballast',
-      weight: '150 kg (FIA minimum)',
-      temp: 'Exhaust: 980°C | Turbo: 1050°C',
-      power: '1,025 BHP combined (ICE 740 + ERS 285)',
-      material: 'Cast Iron / Inconel / Carbon Fibre'
-    }
-  },
-  'tyre-rear': {
-    title: 'Rear Traction Wheels (Pirelli)',
-    category: 'TRACTION & SUSPENSION',
-    desc: 'Extra-wide 405 mm Pirelli rear slick tyres providing massive longitudinal traction for over 1,000 BHP launches. Supported by pushrod-actuated rear suspension with anti-squat geometry and carbon-ceramic disc assemblies.',
-    specs: {
-      downforce: 'Rear Axle Load: 1,150 kg',
-      weight: '12.6 kg per wheel',
-      temp: 'Operating window: 100°C - 115°C',
-      power: 'Transmits 1,025 BHP to tarmac',
-      material: 'High-tack polymer & BBS Magnesium'
-    }
-  },
-  'rear-wing': {
-    title: 'DRS High-Downforce Rear Wing',
-    category: 'AERODYNAMICS',
-    desc: 'Dual-element high-downforce rear wing with hydraulically operated Drag Reduction System (DRS). Opens an 85 mm slot gap to reduce aerodynamic drag by 22% on straightaways, granting a +18 km/h top-speed overtaking boost.',
-    specs: {
-      downforce: '1,250 kg @ 300 km/h',
-      weight: '13.8 kg with hydraulic actuator',
-      temp: '75°C exhaust heat wash',
-      power: 'DRS response: 0.18s actuation',
-      material: 'Ultra-high Modulus Carbon Fibre'
-    }
-  },
-  'diffuser': {
-    title: 'Ground Effect Floor & Diffuser',
-    category: 'GROUND EFFECT',
-    desc: 'Full ground-effect Venturi undertray with dual 3D curved venturi tunnels expanding into an upswept rear diffuser. Generates over 60% of total vehicle downforce with minimal induced wake drag using ground effect principles.',
-    specs: {
-      downforce: '1,850 kg @ 300 km/h',
-      weight: '28.0 kg total assembly',
-      temp: '65°C underfloor air temp',
-      power: 'Ground suction: ~2.4G cornering grip',
-      material: 'Carbon honeycomb & Kevlar Skid Plank'
-    }
-  }
-};
-
-/* ==========================================================================
-   PROCEDURAL TEXTURE: ASHOKA CHAKRA EMBLEM
-   ========================================================================== */
-function createChakraTexture() {
-  const canvas = document.createElement('canvas');
-  canvas.width = 512; canvas.height = 512;
-  const ctx = canvas.getContext('2d');
-
-  // Pure white base circular disc
-  ctx.fillStyle = '#FFFFFF';
-  ctx.fillRect(0, 0, 512, 512);
-
-  // Navy Blue circular rim
-  ctx.strokeStyle = '#000080';
-  ctx.lineWidth = 14;
-  ctx.beginPath();
-  ctx.arc(256, 256, 215, 0, Math.PI * 2);
-  ctx.stroke();
-
-  // Outer decorative rim
-  ctx.lineWidth = 4;
-  ctx.beginPath();
-  ctx.arc(256, 256, 232, 0, Math.PI * 2);
-  ctx.stroke();
-
-  // Central hub
-  ctx.fillStyle = '#000080';
-  ctx.beginPath();
-  ctx.arc(256, 256, 44, 0, Math.PI * 2);
-  ctx.fill();
-
-  ctx.fillStyle = '#FFFFFF';
-  ctx.beginPath();
-  ctx.arc(256, 256, 16, 0, Math.PI * 2);
-  ctx.fill();
-
-  // Exactly 24 spokes of the Ashoka Chakra
-  ctx.strokeStyle = '#000080';
-  ctx.lineWidth = 8;
-  ctx.lineCap = 'round';
-  for (let i = 0; i < 24; i++) {
-    const angle = (i * Math.PI * 2) / 24;
-    ctx.beginPath();
-    ctx.moveTo(256 + Math.cos(angle) * 44, 256 + Math.sin(angle) * 44);
-    ctx.lineTo(256 + Math.cos(angle) * 210, 256 + Math.sin(angle) * 210);
-    ctx.stroke();
-  }
-
-  const texture = new THREE.CanvasTexture(canvas);
-  texture.needsUpdate = true;
-  return texture;
-}
-
-/* ==========================================================================
-   INITIALIZE THREE.JS SCENE
-   ========================================================================== */
-function initThreeScene() {
-  const container = document.getElementById('canvas-container');
-  const width = container.clientWidth;
-  const height = container.clientHeight;
-
-  // Scene
-  scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x070709, 0.035);
-
-  // Camera
-  camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
-  camera.position.set(7.5, 3.4, 7.5);
-
-  // Renderer
-  renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
-  renderer.setSize(width, height);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-  if (THREE.sRGBEncoding) renderer.outputEncoding = THREE.sRGBEncoding;
-  container.appendChild(renderer.domElement);
-
-  // OrbitControls
-  controls = new THREE.OrbitControls(camera, renderer.domElement);
-  controls.enableDamping = true;
-  controls.dampingFactor = 0.06;
-  controls.maxPolarAngle = Math.PI / 2 - 0.02; // prevent camera going below track
-  controls.minDistance = 3.5;
-  controls.maxDistance = 22;
-  controls.target.set(0, 0.7, 0);
-
-  // Lighting
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
-  scene.add(ambientLight);
-
-  const sunLight = new THREE.DirectionalLight(0xffffff, 1.3);
-  sunLight.position.set(12, 18, 12);
-  sunLight.castShadow = true;
-  sunLight.shadow.mapSize.width = 2048;
-  sunLight.shadow.mapSize.height = 2048;
-  sunLight.shadow.camera.near = 0.5;
-  sunLight.shadow.camera.far = 45;
-  const d = 10;
-  sunLight.shadow.camera.left = -d;
-  sunLight.shadow.camera.right = d;
-  sunLight.shadow.camera.top = d;
-  sunLight.shadow.camera.bottom = -d;
-  sunLight.shadow.bias = -0.0005;
-  scene.add(sunLight);
-
-  // Tricolor atmospheric studio lights
-  const saffronFill = new THREE.PointLight(0xFF9933, 1.4, 30);
-  saffronFill.position.set(-8, 6, 8);
-  scene.add(saffronFill);
-
-  const greenFill = new THREE.PointLight(0x138808, 1.4, 30);
-  greenFill.position.set(8, 6, -8);
-  scene.add(greenFill);
-
-  const blueRim = new THREE.PointLight(0x2979ff, 0.8, 25);
-  blueRim.position.set(0, 8, -12);
-  scene.add(blueRim);
-
-  // Build Circuit Track Platform & Moving Lines
-  buildTrackEnvironment();
-
-  // Build Full 3D Formula 1 Car
-  buildFormula1Car();
-
-  // Canvas Event Listeners for Raycasting Click/Touch
-  renderer.domElement.addEventListener('click', onCanvasClick);
-  renderer.domElement.addEventListener('touchstart', onCanvasTouch, { passive: true });
-}
-
-/* ==========================================================================
-   CIRCUIT TRACK PLATFORM & DASHED SPEED LINES
-   ========================================================================== */
-function buildTrackEnvironment() {
-  // Circular asphalt platform
-  const trackGeo = new THREE.CylinderGeometry(18, 18, 0.4, 64);
-  const trackMat = new THREE.MeshStandardMaterial({
-    color: 0x121216,
-    roughness: 0.85,
-    metalness: 0.15
-  });
-  const track = new THREE.Mesh(trackGeo, trackMat);
-  track.position.y = -0.2;
-  track.receiveShadow = true;
-  scene.add(track);
-
-  // Outer red/white FIA racing kerb ring
-  const kerbGeo = new THREE.RingGeometry(16.5, 17.8, 64);
-  const kerbMat = new THREE.MeshStandardMaterial({
-    color: 0xE10600,
-    roughness: 0.7,
-    side: THREE.DoubleSide
-  });
-  const kerb = new THREE.Mesh(kerbGeo, kerbMat);
-  kerb.rotation.x = -Math.PI / 2;
-  kerb.position.y = 0.01;
-  kerb.receiveShadow = true;
-  scene.add(kerb);
-
-  // Moving track dashed lines group (simulates rushing track when racing)
-  trackLinesGroup = new THREE.Group();
-  for (let z = -20; z <= 20; z += 3.5) {
-    const dashGeo = new THREE.PlaneGeometry(0.25, 1.8);
-    const dashMat = new THREE.MeshBasicMaterial({ color: 0xFFFFFF, transparent: true, opacity: 0.35 });
-    const dash = new THREE.Mesh(dashGeo, dashMat);
-    dash.rotation.x = -Math.PI / 2;
-    dash.position.set(0, 0.02, z);
-    trackLinesGroup.add(dash);
-
-    // Left and right lane bounds
-    const sideDashL = dash.clone();
-    sideDashL.position.x = -2.8;
-    sideDashL.material = new THREE.MeshBasicMaterial({ color: 0xFF9933, transparent: true, opacity: 0.4 });
-    trackLinesGroup.add(sideDashL);
-
-    const sideDashR = dash.clone();
-    sideDashR.position.x = 2.8;
-    sideDashR.material = new THREE.MeshBasicMaterial({ color: 0x138808, transparent: true, opacity: 0.4 });
-    trackLinesGroup.add(sideDashR);
-  }
-  scene.add(trackLinesGroup);
-
-  // Exhaust particle sparks system
-  const sparkCount = 60;
-  const sparkGeo = new THREE.BufferGeometry();
-  const sparkPositions = new Float32Array(sparkCount * 3);
-  for (let i = 0; i < sparkCount; i++) {
-    sparkPositions[i * 3] = (Math.random() - 0.5) * 0.4;
-    sparkPositions[i * 3 + 1] = 0.4 + Math.random() * 0.3;
-    sparkPositions[i * 3 + 2] = -2.6 - Math.random() * 3.5;
-  }
-  sparkGeo.setAttribute('position', new THREE.BufferAttribute(sparkPositions, 3));
-  const sparkMat = new THREE.PointsMaterial({
-    color: 0xF5A623,
-    size: 0.12,
-    transparent: true,
-    opacity: 0.0
-  });
-  exhaustSparks = new THREE.Points(sparkGeo, sparkMat);
-  scene.add(exhaustSparks);
-}
-
-/* ==========================================================================
-   BUILD COMPLETE 3D FORMULA 1 CAR IN INDIAN TRICOLOR LIVERY
-   ========================================================================== */
-function buildFormula1Car() {
-  carGroup = new THREE.Group();
-  carGroup.position.y = baseCarY;
-  scene.add(carGroup);
-
-  // Shared Materials
-  const saffronMat = new THREE.MeshStandardMaterial({
-    color: 0xFF9933,
-    roughness: 0.25,
-    metalness: 0.55
-  });
-  const whiteMat = new THREE.MeshStandardMaterial({
-    color: 0xF8F9FA,
-    roughness: 0.2,
-    metalness: 0.45
-  });
-  const greenMat = new THREE.MeshStandardMaterial({
-    color: 0x138808,
-    roughness: 0.25,
-    metalness: 0.55
-  });
-  const carbonMat = new THREE.MeshStandardMaterial({
-    color: 0x141418,
-    roughness: 0.5,
-    metalness: 0.7
-  });
-  const redAccentMat = new THREE.MeshStandardMaterial({
-    color: 0xE10600,
-    roughness: 0.2,
-    metalness: 0.6
-  });
-  const goldBbsMat = new THREE.MeshStandardMaterial({
-    color: 0xD4AF37,
-    roughness: 0.25,
-    metalness: 0.95
-  });
-  const tyreMat = new THREE.MeshStandardMaterial({
-    color: 0x18181A,
-    roughness: 0.9,
-    metalness: 0.1
-  });
-  const titaniumMat = new THREE.MeshStandardMaterial({
-    color: 0x8C9AA6,
-    roughness: 0.3,
-    metalness: 0.9
-  });
-  const visorMat = new THREE.MeshStandardMaterial({
-    color: 0x050C16,
-    roughness: 0.05,
-    metalness: 0.98
-  });
-
-  const chakraTexture = createChakraTexture();
-  const chakraMat = new THREE.MeshStandardMaterial({
-    map: chakraTexture,
-    roughness: 0.3,
-    metalness: 0.2
-  });
-
-  function tagMesh(mesh, partId) {
-    mesh.userData.partId = partId;
-    interactiveMeshes.push(mesh);
-    mesh.castShadow = true;
-    mesh.receiveShadow = true;
-    return mesh;
-  }
-
-  /* -------------------------------------------------------------
-     1. FRONT WING ASSEMBLY (partId: 'front-wing')
-     ------------------------------------------------------------- */
-  const frontWingGroup = new THREE.Group();
-  frontWingGroup.position.set(0, 0.16, 2.7);
-
-  // Main lower aerofoil plane
-  const fwBase = new THREE.Mesh(new THREE.BoxGeometry(3.3, 0.05, 0.7), greenMat);
-  tagMesh(fwBase, 'front-wing');
-  frontWingGroup.add(fwBase);
-
-  // Tiered upper flaps (White & Saffron)
-  const fwMid = new THREE.Mesh(new THREE.BoxGeometry(3.15, 0.04, 0.45), whiteMat);
-  fwMid.position.set(0, 0.05, -0.06);
-  tagMesh(fwMid, 'front-wing');
-  frontWingGroup.add(fwMid);
-
-  const fwTop = new THREE.Mesh(new THREE.BoxGeometry(3.0, 0.04, 0.3), saffronMat);
-  fwTop.position.set(0, 0.1, -0.12);
-  tagMesh(fwTop, 'front-wing');
-  frontWingGroup.add(fwTop);
-
-  // Left & Right Vertical Endplates
-  [-1.68, 1.68].forEach(x => {
-    const endplate = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.38, 0.82), redAccentMat);
-    endplate.position.set(x, 0.14, 0);
-    tagMesh(endplate, 'front-wing');
-    frontWingGroup.add(endplate);
-
-    // Outer dive plane
-    const divePlane = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.02, 0.3), carbonMat);
-    divePlane.position.set(x + (x > 0 ? 0.1 : -0.1), 0.16, 0.05);
-    divePlane.rotation.z = x > 0 ? -0.2 : 0.2;
-    tagMesh(divePlane, 'front-wing');
-    frontWingGroup.add(divePlane);
-  });
-
-  // Nose mounting pylons
-  [-0.22, 0.22].forEach(x => {
-    const pylon = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.24, 0.4), carbonMat);
-    pylon.position.set(x, 0.18, -0.15);
-    tagMesh(pylon, 'front-wing');
-    frontWingGroup.add(pylon);
-  });
-
-  carGroup.add(frontWingGroup);
-
-  /* -------------------------------------------------------------
-     2. NOSE CONE & FRONT MONOCOQUE
-     ------------------------------------------------------------- */
-  const noseGroup = new THREE.Group();
-
-  // Tapered nose cone extending forward
-  const noseGeo = new THREE.CylinderGeometry(0.18, 0.42, 2.1, 16);
-  const nose = new THREE.Mesh(noseGeo, saffronMat);
-  nose.rotation.x = Math.PI / 2;
-  nose.position.set(0, 0.35, 1.6);
-  tagMesh(nose, 'front-wing');
-  noseGroup.add(nose);
-
-  // Lower green nose chin
-  const noseChinGeo = new THREE.CylinderGeometry(0.16, 0.38, 2.0, 16);
-  const noseChin = new THREE.Mesh(noseChinGeo, greenMat);
-  noseChin.rotation.x = Math.PI / 2;
-  noseChin.position.set(0, 0.24, 1.6);
-  tagMesh(noseChin, 'front-wing');
-  noseGroup.add(noseChin);
-
-  // Ashoka Chakra Emblem disc on top deck of the nose
-  const chakraDiscGeo = new THREE.CylinderGeometry(0.18, 0.18, 0.02, 32);
-  const chakraDisc = new THREE.Mesh(chakraDiscGeo, chakraMat);
-  chakraDisc.position.set(0, 0.48, 1.4);
-  chakraDisc.rotation.x = 0.08;
-  tagMesh(chakraDisc, 'front-wing');
-  noseGroup.add(chakraDisc);
-
-  carGroup.add(noseGroup);
-
-  /* -------------------------------------------------------------
-     3. COCKPIT, DRIVER & TITANIUM HALO (partId: 'cockpit')
-     ------------------------------------------------------------- */
-  const cockpitGroup = new THREE.Group();
-
-  // Monocoque tub around cockpit
-  const tubGeo = new THREE.BoxGeometry(0.85, 0.55, 1.4);
-  const tub = new THREE.Mesh(tubGeo, whiteMat);
-  tub.position.set(0, 0.42, 0.15);
-  tagMesh(tub, 'cockpit');
-  cockpitGroup.add(tub);
-
-  // Cockpit opening cutout (dark carbon interior)
-  const interiorGeo = new THREE.BoxGeometry(0.56, 0.42, 0.85);
-  const interior = new THREE.Mesh(interiorGeo, carbonMat);
-  interior.position.set(0, 0.52, 0.15);
-  tagMesh(interior, 'cockpit');
-  cockpitGroup.add(interior);
-
-  // Driver Figure: Racing Suit Torso
-  const driverTorso = new THREE.Mesh(new THREE.BoxGeometry(0.44, 0.42, 0.38), saffronMat);
-  driverTorso.position.set(0, 0.52, 0.12);
-  tagMesh(driverTorso, 'cockpit');
-  cockpitGroup.add(driverTorso);
-
-  // Driver Helmet (Saffron/Gold with Dark Visor)
-  const helmet = new THREE.Mesh(new THREE.SphereGeometry(0.2, 24, 24), saffronMat);
-  helmet.position.set(0, 0.82, 0.08);
-  tagMesh(helmet, 'cockpit');
-  cockpitGroup.add(helmet);
-
-  const visor = new THREE.Mesh(new THREE.BoxGeometry(0.24, 0.09, 0.18), visorMat);
-  visor.position.set(0, 0.83, 0.18);
-  tagMesh(visor, 'cockpit');
-  cockpitGroup.add(visor);
-
-  // Steering Wheel with Digital OLED Display
-  const wheelBase = new THREE.Mesh(new THREE.BoxGeometry(0.28, 0.16, 0.03), carbonMat);
-  wheelBase.position.set(0, 0.62, 0.38);
-  wheelBase.rotation.x = -0.3;
-  tagMesh(wheelBase, 'cockpit');
-  cockpitGroup.add(wheelBase);
-
-  const oledDisplay = new THREE.Mesh(new THREE.PlaneGeometry(0.14, 0.07), new THREE.MeshBasicMaterial({ color: 0x00E676 }));
-  oledDisplay.position.set(0, 0.63, 0.395);
-  oledDisplay.rotation.x = -0.3;
-  cockpitGroup.add(oledDisplay);
-
-  // TITANIUM HALO STRUCTURE
-  // Central titanium pillar
-  const haloPillar = new THREE.Mesh(new THREE.CylinderGeometry(0.032, 0.032, 0.48, 16), titaniumMat);
-  haloPillar.position.set(0, 0.82, 0.42);
-  haloPillar.rotation.x = 0.18;
-  tagMesh(haloPillar, 'cockpit');
-  cockpitGroup.add(haloPillar);
-
-  // Curved Titanium Arch Hoop encircling driver
-  const haloArchGeo = new THREE.TorusGeometry(0.38, 0.034, 16, 32, Math.PI + 0.5);
-  const haloArch = new THREE.Mesh(haloArchGeo, titaniumMat);
-  haloArch.rotation.x = Math.PI / 2 + 0.12;
-  haloArch.rotation.z = -Math.PI / 2;
-  haloArch.position.set(0, 0.94, 0.12);
-  tagMesh(haloArch, 'cockpit');
-  cockpitGroup.add(haloArch);
-
-  carGroup.add(cockpitGroup);
-
-  /* -------------------------------------------------------------
-     4. SIDEPODS WITH COOLING INLETS (partId: 'sidepods')
-     ------------------------------------------------------------- */
-  const sidepodsGroup = new THREE.Group();
-
-  [-0.82, 0.82].forEach(x => {
-    const isRight = x > 0;
-    // Main contoured sidepod body
-    const spBodyGeo = new THREE.BoxGeometry(0.65, 0.48, 2.3);
-    const spBody = new THREE.Mesh(spBodyGeo, whiteMat);
-    spBody.position.set(x, 0.36, -0.2);
-    tagMesh(spBody, 'sidepods');
-    sidepodsGroup.add(spBody);
-
-    // Upper Saffron aerodynamic fairing
-    const spTopGeo = new THREE.BoxGeometry(0.62, 0.12, 2.2);
-    const spTop = new THREE.Mesh(spTopGeo, saffronMat);
-    spTop.position.set(x, 0.6, -0.2);
-    tagMesh(spTop, 'sidepods');
-    sidepodsGroup.add(spTop);
-
-    // Lower Green aerodynamic undercut
-    const spBottomGeo = new THREE.BoxGeometry(0.6, 0.1, 2.2);
-    const spBottom = new THREE.Mesh(spBottomGeo, greenMat);
-    spBottom.position.set(x, 0.14, -0.2);
-    tagMesh(spBottom, 'sidepods');
-    sidepodsGroup.add(spBottom);
-
-    // Front radiator cooling air intake opening
-    const intakeRimGeo = new THREE.BoxGeometry(0.55, 0.36, 0.12);
-    const intakeRim = new THREE.Mesh(intakeRimGeo, carbonMat);
-    intakeRim.position.set(x, 0.4, 0.92);
-    tagMesh(intakeRim, 'sidepods');
-    sidepodsGroup.add(intakeRim);
-
-    // Radiator internal cooling mesh
-    const intakeHoleGeo = new THREE.PlaneGeometry(0.48, 0.3);
-    const intakeHole = new THREE.Mesh(intakeHoleGeo, new THREE.MeshBasicMaterial({ color: 0x0A0A0C }));
-    intakeHole.position.set(x, 0.4, 0.99);
-    sidepodsGroup.add(intakeHole);
-
-    // Lateral bargeboard turning vane
-    const vaneGeo = new THREE.BoxGeometry(0.04, 0.5, 0.6);
-    const vane = new THREE.Mesh(vaneGeo, carbonMat);
-    vane.position.set(x + (isRight ? 0.36 : -0.36), 0.35, 0.8);
-    vane.rotation.y = isRight ? 0.18 : -0.18;
-    tagMesh(vane, 'sidepods');
-    sidepodsGroup.add(vane);
-  });
-
-  carGroup.add(sidepodsGroup);
-
-  /* -------------------------------------------------------------
-     5. ENGINE AIRBOX & SHARK FIN (partId: 'engine')
-     ------------------------------------------------------------- */
-  const engineGroup = new THREE.Group();
-
-  // Engine cover body tapering to rear
-  const engCoverGeo = new THREE.CylinderGeometry(0.24, 0.46, 2.2, 16);
-  const engCover = new THREE.Mesh(engCoverGeo, whiteMat);
-  engCover.rotation.x = Math.PI / 2;
-  engCover.position.set(0, 0.54, -1.05);
-  tagMesh(engCover, 'engine');
-  engineGroup.add(engCover);
-
-  // Airbox intake scoop above driver helmet
-  const airboxGeo = new THREE.BoxGeometry(0.38, 0.32, 0.6);
-  const airbox = new THREE.Mesh(airboxGeo, saffronMat);
-  airbox.position.set(0, 1.05, -0.22);
-  tagMesh(airbox, 'engine');
-  engineGroup.add(airbox);
-
-  // Dark airbox intake hole
-  const airHole = new THREE.Mesh(new THREE.PlaneGeometry(0.24, 0.18), new THREE.MeshBasicMaterial({ color: 0x000000 }));
-  airHole.position.set(0, 1.05, 0.09);
-  engineGroup.add(airHole);
-
-  // Vertical Shark Fin running along spine to rear wing
-  const sharkFinGeo = new THREE.BoxGeometry(0.04, 0.55, 1.8);
-  const sharkFin = new THREE.Mesh(sharkFinGeo, saffronMat);
-  sharkFin.position.set(0, 0.95, -1.0);
-  tagMesh(sharkFin, 'engine');
-  engineGroup.add(sharkFin);
-
-  // Ashoka Chakra emblem badge on shark fin
-  [-0.024, 0.024].forEach(x => {
-    const finBadge = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.18, 0.01, 32), chakraMat);
-    finBadge.rotation.z = Math.PI / 2;
-    finBadge.position.set(x, 0.95, -0.9);
-    engineGroup.add(finBadge);
-  });
-
-  // Inconel exhaust tailpipe exiting at rear center
-  const exhaustGeo = new THREE.CylinderGeometry(0.1, 0.1, 0.45, 16);
-  const exhaust = new THREE.Mesh(exhaustGeo, titaniumMat);
-  exhaust.rotation.x = Math.PI / 2;
-  exhaust.position.set(0, 0.52, -2.15);
-  tagMesh(exhaust, 'engine');
-  engineGroup.add(exhaust);
-
-  carGroup.add(engineGroup);
-
-  /* -------------------------------------------------------------
-     6. WHEELS & SUSPENSION (partId: 'tyre-front' & 'tyre-rear')
-     ------------------------------------------------------------- */
-  function createWheelAssembly(radius, width, partId) {
-    const wheelAssembly = new THREE.Group();
-
-    // Pirelli slick rubber tyre
-    const tyreGeo = new THREE.CylinderGeometry(radius, radius, width, 32);
-    const tyre = new THREE.Mesh(tyreGeo, tyreMat);
-    tyre.rotation.z = Math.PI / 2;
-    tagMesh(tyre, partId);
-    wheelAssembly.add(tyre);
-
-    // Pirelli Red Sidewall Pinstripe (inner & outer)
-    [-width / 2 - 0.002, width / 2 + 0.002].forEach(zPos => {
-      const ringGeo = new THREE.RingGeometry(radius * 0.65, radius * 0.72, 32);
-      const ring = new THREE.Mesh(ringGeo, redAccentMat);
-      ring.position.x = zPos;
-      ring.rotation.y = Math.PI / 2;
-      wheelAssembly.add(ring);
-    });
-
-    // BBS Gold Rim Face (inner & outer)
-    [-width / 2 - 0.004, width / 2 + 0.004].forEach(zPos => {
-      const rimGeo = new THREE.CylinderGeometry(radius * 0.6, radius * 0.6, 0.02, 24);
-      const rim = new THREE.Mesh(rimGeo, goldBbsMat);
-      rim.rotation.z = Math.PI / 2;
-      rim.position.x = zPos;
-      wheelAssembly.add(rim);
-
-      // Center lock nut
-      const nutGeo = new THREE.CylinderGeometry(radius * 0.15, radius * 0.15, 0.06, 12);
-      const nut = new THREE.Mesh(nutGeo, redAccentMat);
-      nut.rotation.z = Math.PI / 2;
-      nut.position.x = zPos + (zPos > 0 ? 0.02 : -0.02);
-      wheelAssembly.add(nut);
-    });
-
-    // Carbon-Ceramic Brake Rotor inside
-    const rotorGeo = new THREE.CylinderGeometry(radius * 0.48, radius * 0.48, 0.04, 24);
-    const rotor = new THREE.Mesh(rotorGeo, titaniumMat);
-    rotor.rotation.z = Math.PI / 2;
-    wheelAssembly.add(rotor);
-
-    // Brembo Red Brake Caliper
-    const caliperGeo = new THREE.BoxGeometry(0.12, radius * 0.35, 0.16);
-    const caliper = new THREE.Mesh(caliperGeo, redAccentMat);
-    caliper.position.set(0, radius * 0.3, 0);
-    wheelAssembly.add(caliper);
-
-    return wheelAssembly;
-  }
-
-  // Front Wheels (305 mm width)
-  const frontWheelL = createWheelAssembly(0.52, 0.42, 'tyre-front');
-  frontWheelL.position.set(-1.62, 0.52, 1.8);
-  carGroup.add(frontWheelL);
-  wheels.push(frontWheelL);
-
-  const frontWheelR = createWheelAssembly(0.52, 0.42, 'tyre-front');
-  frontWheelR.position.set(1.62, 0.52, 1.8);
-  carGroup.add(frontWheelR);
-  wheels.push(frontWheelR);
-
-  // Front Carbon Suspension Wishbones
-  [-1.62, 1.62].forEach(x => {
-    const isRight = x > 0;
-    const armGeo = new THREE.CylinderGeometry(0.02, 0.02, 1.15, 8);
-    const upperArm = new THREE.Mesh(armGeo, carbonMat);
-    upperArm.position.set(x * 0.55, 0.55, 1.8);
-    upperArm.rotation.z = isRight ? 1.35 : -1.35;
-    tagMesh(upperArm, 'tyre-front');
-    carGroup.add(upperArm);
-
-    const lowerArm = new THREE.Mesh(armGeo, carbonMat);
-    lowerArm.position.set(x * 0.55, 0.32, 1.8);
-    lowerArm.rotation.z = isRight ? 1.45 : -1.45;
-    tagMesh(lowerArm, 'tyre-front');
-    carGroup.add(lowerArm);
-  });
-
-  // Rear Wheels (405 mm width - extra traction)
-  const rearWheelL = createWheelAssembly(0.56, 0.55, 'tyre-rear');
-  rearWheelL.position.set(-1.68, 0.56, -1.85);
-  carGroup.add(rearWheelL);
-  wheels.push(rearWheelL);
-
-  const rearWheelR = createWheelAssembly(0.56, 0.55, 'tyre-rear');
-  rearWheelR.position.set(1.68, 0.56, -1.85);
-  carGroup.add(rearWheelR);
-  wheels.push(rearWheelR);
-
-  // Rear Suspension Wishbones
-  [-1.68, 1.68].forEach(x => {
-    const isRight = x > 0;
-    const rArmGeo = new THREE.CylinderGeometry(0.022, 0.022, 1.18, 8);
-    const rUpperArm = new THREE.Mesh(rArmGeo, carbonMat);
-    rUpperArm.position.set(x * 0.55, 0.58, -1.85);
-    rUpperArm.rotation.z = isRight ? 1.35 : -1.35;
-    tagMesh(rUpperArm, 'tyre-rear');
-    carGroup.add(rUpperArm);
-
-    const rLowerArm = new THREE.Mesh(rArmGeo, carbonMat);
-    rLowerArm.position.set(x * 0.55, 0.34, -1.85);
-    rLowerArm.rotation.z = isRight ? 1.45 : -1.45;
-    tagMesh(rLowerArm, 'tyre-rear');
-    carGroup.add(rLowerArm);
-  });
-
-  /* -------------------------------------------------------------
-     7. HIGH DOWNFORCE REAR WING WITH DRS (partId: 'rear-wing')
-     ------------------------------------------------------------- */
-  const rearWingGroup = new THREE.Group();
-  rearWingGroup.position.set(0, 1.05, -2.4);
-
-  // Twin swan-neck mounting pylons
-  [-0.26, 0.26].forEach(x => {
-    const pylon = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.75, 0.16), carbonMat);
-    pylon.position.set(x, -0.22, 0.05);
-    pylon.rotation.x = -0.25;
-    tagMesh(pylon, 'rear-wing');
-    rearWingGroup.add(pylon);
-  });
-
-  // Main lower downforce aerofoil (Saffron)
-  const rwMain = new THREE.Mesh(new THREE.BoxGeometry(2.35, 0.06, 0.55), saffronMat);
-  rwMain.position.set(0, 0.12, 0);
-  tagMesh(rwMain, 'rear-wing');
-  rearWingGroup.add(rwMain);
-
-  // Upper DRS flap (White with green leading edge)
-  const rwDrs = new THREE.Mesh(new THREE.BoxGeometry(2.35, 0.04, 0.32), whiteMat);
-  rwDrs.position.set(0, 0.24, -0.1);
-  tagMesh(rwDrs, 'rear-wing');
-  rearWingGroup.add(rwDrs);
-
-  // DRS Hydraulic Actuator Pod in center
-  const drsPod = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.14, 0.22), redAccentMat);
-  drsPod.position.set(0, 0.24, -0.06);
-  tagMesh(drsPod, 'rear-wing');
-  rearWingGroup.add(drsPod);
-
-  // Large vertical endplates
-  [-1.2, 1.2].forEach(x => {
-    const ep = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.65, 0.85), redAccentMat);
-    ep.position.set(x, 0.12, -0.05);
-    tagMesh(ep, 'rear-wing');
-    rearWingGroup.add(ep);
-  });
-
-  // FIA Rain Safety Flashing Red LED Light
-  const fiaLightGeo = new THREE.BoxGeometry(0.16, 0.08, 0.05);
-  const fiaLightMat = new THREE.MeshBasicMaterial({ color: 0xFF0000 });
-  const fiaLight = new THREE.Mesh(fiaLightGeo, fiaLightMat);
-  fiaLight.position.set(0, -0.55, 0.1);
-  rearWingGroup.add(fiaLight);
-
-  carGroup.add(rearWingGroup);
-
-  /* -------------------------------------------------------------
-     8. GROUND EFFECT FLOOR & DIFFUSER (partId: 'diffuser')
-     ------------------------------------------------------------- */
-  const floorGroup = new THREE.Group();
-
-  // Wide ground-effect Venturi floor plate
-  const floorGeo = new THREE.BoxGeometry(2.3, 0.05, 5.2);
-  const floor = new THREE.Mesh(floorGeo, carbonMat);
-  floor.position.set(0, 0.14, 0.1);
-  tagMesh(floor, 'diffuser');
-  floorGroup.add(floor);
-
-  // Rear upswept diffuser channels
-  const diffuserGeo = new THREE.BoxGeometry(2.0, 0.28, 0.95);
-  const diffuser = new THREE.Mesh(diffuserGeo, carbonMat);
-  diffuser.position.set(0, 0.22, -2.25);
-  diffuser.rotation.x = 0.24;
-  tagMesh(diffuser, 'diffuser');
-  floorGroup.add(diffuser);
-
-  // Vertical aerodynamic guide fences
-  [-0.6, -0.2, 0.2, 0.6].forEach(x => {
-    const fence = new THREE.Mesh(new THREE.BoxGeometry(0.03, 0.35, 0.92), carbonMat);
-    fence.position.set(x, 0.24, -2.25);
-    fence.rotation.x = 0.24;
-    tagMesh(fence, 'diffuser');
-    floorGroup.add(fence);
-  });
-
-  carGroup.add(floorGroup);
-}
-
-/* ==========================================================================
-   WEB AUDIO API ENGINE PROCEDURAL SOUND
-   ========================================================================== */
-function toggleEngineAudio(start) {
-  try {
-    if (!audioCtx) {
-      const AudioCtxClass = window.AudioContext || window.webkitAudioContext;
-      if (!AudioCtxClass) return;
-      audioCtx = new AudioCtxClass();
-    }
-    if (audioCtx.state === 'suspended') audioCtx.resume();
-
-    if (start) {
-      if (engineOsc1) return;
-      engineOsc1 = audioCtx.createOscillator();
-      engineOsc2 = audioCtx.createOscillator();
-      engineFilter = audioCtx.createBiquadFilter();
-      engineGain = audioCtx.createGain();
-
-      engineOsc1.type = 'sawtooth';
-      engineOsc1.frequency.setValueAtTime(60, audioCtx.currentTime);
-
-      engineOsc2.type = 'triangle';
-      engineOsc2.frequency.setValueAtTime(120, audioCtx.currentTime);
-
-      engineFilter.type = 'lowpass';
-      engineFilter.frequency.setValueAtTime(400, audioCtx.currentTime);
-
-      engineGain.gain.setValueAtTime(0.01, audioCtx.currentTime);
-      engineGain.gain.linearRampToValueAtTime(0.14, audioCtx.currentTime + 0.4);
-
-      engineOsc1.connect(engineFilter);
-      engineOsc2.connect(engineFilter);
-      engineFilter.connect(engineGain);
-      engineGain.connect(audioCtx.destination);
-
-      engineOsc1.start();
-      engineOsc2.start();
-    } else {
-      if (engineGain) {
-        engineGain.gain.linearRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
-        setTimeout(() => {
-          if (engineOsc1) {
-            try {
-              engineOsc1.stop();
-              engineOsc2.stop();
-            } catch (e) {}
-            engineOsc1 = null; engineOsc2 = null; engineGain = null; engineFilter = null;
-          }
-        }, 320);
-      }
-    }
-  } catch (e) {
-    console.warn('Audio synthesis notice:', e);
-  }
-}
-
-function updateEngineAudioPitch(rpmNorm) {
-  if (!audioCtx || !engineOsc1) return;
-  try {
-    const baseFreq = 58 + rpmNorm * 220; // 58Hz to 278Hz
-    engineOsc1.frequency.setTargetAtTime(baseFreq, audioCtx.currentTime, 0.05);
-    if (engineOsc2) {
-      engineOsc2.frequency.setTargetAtTime(baseFreq * 2.05, audioCtx.currentTime, 0.05);
-    }
-    if (engineFilter) {
-      engineFilter.frequency.setTargetAtTime(380 + rpmNorm * 1250, audioCtx.currentTime, 0.05);
-    }
-  } catch (e) {}
-}
-
-/* ==========================================================================
-   ANIMATION & RENDER LOOP
-   ========================================================================== */
-const clock = new THREE.Clock();
-
-function animate() {
-  requestAnimationFrame(animate);
-  const elapsedTime = clock.getElapsedTime();
-
-  // OrbitControls update
-  controls.update();
-
-  // Auto-Rotate
-  controls.autoRotate = autoRotateActive;
-  controls.autoRotateSpeed = 2.0;
-
-  // Dynamic Race Mode
-  if (isRacing) {
-    // 1. Wheels spin rapidly
-    wheels.forEach(w => {
-      w.rotation.x -= 0.45;
-    });
-
-    // 2. Chassis vibrates realistically with engine revs
-    carGroup.position.y = baseCarY + Math.sin(elapsedTime * 60) * 0.012;
-
-    // 3. Track dashes rush backwards at 320+ km/h
-    if (trackLinesGroup) {
-      trackLinesGroup.position.z -= 1.15;
-      if (trackLinesGroup.position.z < -7) {
-        trackLinesGroup.position.z = 0;
-      }
-    }
-
-    // 4. Exhaust sparks
-    if (exhaustSparks) {
-      exhaustSparks.material.opacity = 0.85;
-      const positions = exhaustSparks.geometry.attributes.position.array;
-      for (let i = 0; i < positions.length; i += 3) {
-        positions[i + 2] -= 0.35;
-        if (positions[i + 2] < -7) {
-          positions[i + 2] = -2.6;
-          positions[i] = (Math.random() - 0.5) * 0.4;
-        }
-      }
-      exhaustSparks.geometry.attributes.position.needsUpdate = true;
-    }
-
-    // 5. Telemetry acceleration
-    currentSpeed = Math.min(335, currentSpeed + 4.5);
-    currentRpm = Math.min(14800, currentRpm + 220);
-
-    updateEngineAudioPitch(currentRpm / 15000);
-    document.getElementById('teleDrs').textContent = 'ACTIVE';
-    document.getElementById('teleDrs').style.color = '#00E676';
-  } else {
-    // Decelerate smoothly to idle/stop
-    if (currentSpeed > 0) {
-      currentSpeed = Math.max(0, currentSpeed - 8);
-      currentRpm = Math.max(0, currentRpm - 350);
-      wheels.forEach(w => {
-        w.rotation.x -= (currentSpeed / 335) * 0.45;
-      });
-      if (trackLinesGroup && trackLinesGroup.position.z < 0) {
-        trackLinesGroup.position.z += 0.2;
-      }
-      updateEngineAudioPitch(currentRpm / 15000);
-    } else {
-      carGroup.position.y = baseCarY;
-      if (exhaustSparks) exhaustSparks.material.opacity = 0.0;
-      document.getElementById('teleDrs').textContent = 'READY';
-      document.getElementById('teleDrs').style.color = '#FFFFFF';
-    }
-  }
-
-  // Update Telemetry HUD numbers
-  document.getElementById('teleSpeed').textContent = Math.round(currentSpeed) + ' KM/H';
-  document.getElementById('teleRpm').textContent = Math.round(currentRpm).toLocaleString() + ' RPM';
-
-  renderer.render(scene, camera);
-}
-
-/* ==========================================================================
-   CAMERA & HUD CONTROLS
-   ========================================================================== */
-function toggleAutoRotate() {
-  autoRotateActive = !autoRotateActive;
-  const btn = document.getElementById('btnAutoRotate');
-  btn.classList.toggle('active', autoRotateActive);
-}
-
-function toggleRaceMode() {
-  isRacing = !isRacing;
-  const btn = document.getElementById('btnRaceMode');
-  btn.classList.toggle('active-race', isRacing);
-  toggleEngineAudio(isRacing);
-
-  if (isRacing) {
-    showToast('🏎️ Race Mode Activated: Wheels spinning & engine roaring!', 'success');
-  } else {
-    showToast('🛑 Car decelerating to pit lane stop.', '');
-  }
-}
-
-function resetCameraView() {
-  camera.position.set(7.5, 3.4, 7.5);
-  controls.target.set(0, 0.7, 0);
-  controls.update();
-  showToast('🎯 View Angle Reset', '');
-}
-
-/* ==========================================================================
-   PART INSPECTION & RAYCASTING
-   ========================================================================== */
-function onCanvasClick(event) {
-  const rect = renderer.domElement.getBoundingClientRect();
-  mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-  mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-  performRaycast();
-}
-
-function onCanvasTouch(event) {
-  if (event.touches.length === 1) {
-    const rect = renderer.domElement.getBoundingClientRect();
-    const touch = event.touches[0];
-    mouse.x = ((touch.clientX - rect.left) / rect.width) * 2 - 1;
-    mouse.y = -((touch.clientY - rect.top) / rect.height) * 2 + 1;
-    performRaycast();
-  }
-}
-
-function performRaycast() {
-  raycaster.setFromCamera(mouse, camera);
-  const intersects = raycaster.intersectObjects(interactiveMeshes, false);
-  if (intersects.length > 0) {
-    const hitObj = intersects[0].object;
-    if (hitObj.userData && hitObj.userData.partId) {
-      inspectPart(hitObj.userData.partId);
-      flashMesh(hitObj);
-    }
-  }
-}
-
-function flashMesh(mesh) {
-  if (mesh.material && mesh.material.emissive) {
-    const origEmissive = mesh.material.emissive.getHex();
-    mesh.material.emissive.setHex(0xFF9933);
-    setTimeout(() => {
-      mesh.material.emissive.setHex(origEmissive);
-    }, 300);
-  }
-}
-
-function inspectPart(partId) {
-  const data = PARTS_DATA[partId];
-  if (!data) return;
-
-  // Update Part Card
-  document.getElementById('partTitle').textContent = data.title;
-  document.getElementById('partCategory').textContent = data.category;
-  document.getElementById('partDesc').textContent = data.desc;
-  document.getElementById('specDownforce').textContent = data.specs.downforce;
-  document.getElementById('specWeight').textContent = data.specs.weight;
-  document.getElementById('specTemp').textContent = data.specs.temp;
-  document.getElementById('specPower').textContent = data.specs.power;
-  document.getElementById('specMaterial').textContent = data.specs.material;
-
-  document.getElementById('partCard').classList.add('show');
-
-  // Update active pill in bottom dock
-  document.querySelectorAll('.dock-pill').forEach(pill => {
-    pill.classList.remove('active');
-    if (pill.getAttribute('onclick').includes(partId)) {
-      pill.classList.add('active');
-    }
-  });
-}
-
-function closePartCard() {
-  document.getElementById('partCard').classList.remove('show');
-}
-
-/* ==========================================================================
-   VIEW SWITCHING
-   ========================================================================== */
-function switchView(viewName) {
-  document.querySelectorAll('.view-pane').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-tab-btn').forEach(b => b.classList.remove('active'));
-
-  const targetPane = document.getElementById('view-' + viewName);
-  const targetTab = document.getElementById('tab-' + viewName);
-
-  if (targetPane) targetPane.classList.add('active');
-  if (targetTab) targetTab.classList.add('active');
-
-  if (viewName === 'car') {
-    // Resize 3D canvas accurately
-    setTimeout(() => {
-      const container = document.getElementById('canvas-container');
-      if (renderer && container) {
-        renderer.setSize(container.clientWidth, container.clientHeight);
-        camera.aspect = container.clientWidth / container.clientHeight;
-        camera.updateProjectionMatrix();
-      }
-    }, 50);
-  } else if (viewName === 'polls') {
-    loadPolls();
-  } else if (viewName === 'admin') {
-    if (!currentUser || currentUser.role !== 'admin') {
-      showToast('⚠️ Administrator access required.', 'error');
-      switchView('car');
-      return;
-    }
-    loadAdminData();
-  }
-}
-
-/* ==========================================================================
-   TOAST NOTIFICATIONS & API CALLS
-   ========================================================================== */
-function showToast(msg, type = '') {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = 'toast show ' + type;
-  setTimeout(() => {
-    t.className = 'toast';
-  }, 3200);
-}
-
-async function apiCall(method, path, body = null, requireAuth = true) {
-  const opts = {
-    method: method,
-    headers: { 'Content-Type': 'application/json' }
-  };
-  if (requireAuth && currentUser && currentUser.token) {
-    opts.headers['Authorization'] = 'Bearer ' + currentUser.token;
-  }
-  if (body) {
-    opts.body = JSON.stringify(body);
-  }
-  try {
-    const res = await fetch(path, opts);
-    const data = await res.json();
-    return { ok: res.ok, status: res.status, data: data };
-  } catch (err) {
-    return { ok: false, status: 0, data: { error: 'Network error or server unavailable' } };
-  }
-}
-
-/* ==========================================================================
-   AUTHENTICATION LOGIC & MODAL
-   ========================================================================== */
-function openAuthModal(defaultTab = 'login') {
-  document.getElementById('authModal').classList.add('show');
-  switchModalTab(defaultTab);
-}
-
-function closeAuthModal() {
-  document.getElementById('authModal').classList.remove('show');
-  clearAuthErrors();
-}
-
-function switchModalTab(tab) {
-  clearAuthErrors();
-  const tabs = ['admin', 'login', 'signup'];
-  tabs.forEach(t => {
-    const btn = document.getElementById('modalTabBtn' + capitalize(t));
-    const pane = document.getElementById('pane' + capitalize(t));
-    if (btn) btn.classList.toggle('active', t === tab);
-    if (pane) pane.classList.toggle('active', t === tab);
-  });
-}
-
-function capitalize(s) {
-  return s.charAt(0).toUpperCase() + s.slice(1);
-}
-
-function clearAuthErrors() {
-  ['adminError', 'loginError', 'signupError'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) { el.textContent = ''; el.style.display = 'none'; }
-  });
-}
-
-function showAuthError(id, msg) {
-  const el = document.getElementById(id);
-  if (el) { el.textContent = msg; el.style.display = 'block'; }
-}
-
-// 1-Click Root Administrator Login (AhlawatDhruv / @01)
-async function quickAdminLogin() {
-  document.getElementById('adminUsername').value = 'AhlawatDhruv';
-  document.getElementById('adminPassword').value = '@01';
-  await doAdminLogin();
-}
-
-async function doAdminLogin() {
-  const u = document.getElementById('adminUsername').value.trim();
-  const p = document.getElementById('adminPassword').value;
-  clearAuthErrors();
-
-  if (!u || !p) {
-    showAuthError('adminError', 'Please enter administrator username and password');
-    return;
-  }
-
-  const res = await apiCall('POST', '/api/auth/admin-login', { username: u, password: p }, false);
-  if (res.ok) {
-    handleLoginSuccess(res.data);
-    showToast('👑 Welcome Root Administrator ' + res.data.username + '!', 'success');
-  } else {
-    showAuthError('adminError', res.data.error || 'Invalid administrator credentials');
-  }
-}
-
-async function doMemberLogin() {
-  const u = document.getElementById('loginUsername').value.trim();
-  const p = document.getElementById('loginPassword').value;
-  clearAuthErrors();
-
-  if (!u || !p) {
-    showAuthError('loginError', 'Please enter username and password');
-    return;
-  }
-
-  const res = await apiCall('POST', '/api/auth/login', { username: u, password: p }, false);
-  if (res.ok) {
-    handleLoginSuccess(res.data);
-    showToast('🏎️ Welcome back, ' + res.data.username + '!', 'success');
-  } else {
-    showAuthError('loginError', res.data.error || 'Invalid username or password');
-  }
-}
-
-async function doSignup() {
-  const u = document.getElementById('signupUsername').value.trim();
-  const p = document.getElementById('signupPassword').value;
-  const c = document.getElementById('signupConfirm').value;
-  clearAuthErrors();
-
-  if (!u || !p) {
-    showAuthError('signupError', 'Please provide username and password');
-    return;
-  }
-  if (p !== c) {
-    showAuthError('signupError', 'Passwords do not match');
-    return;
-  }
-  if (p.length < 4) {
-    showAuthError('signupError', 'Password must be at least 4 characters');
-    return;
-  }
-
-  const res = await apiCall('POST', '/api/auth/signup', { username: u, password: p }, false);
-  if (res.ok) {
-    handleLoginSuccess(res.data);
-    showToast('🎉 Account registered! Welcome to Bharat F1, ' + res.data.username, 'success');
-  } else {
-    showAuthError('signupError', res.data.error || 'Signup failed');
-  }
-}
-
-async function continueAsGuest() {
-  const res = await apiCall('POST', '/api/auth/guest', {}, false);
-  if (res.ok) {
-    handleLoginSuccess(res.data);
-    showToast('👤 Entered as Guest (View-Only)', '');
-  }
-}
-
-function handleLoginSuccess(user) {
-  currentUser = user;
-  localStorage.setItem('bharatf1_user', JSON.stringify(currentUser));
-  closeAuthModal();
-  updateAuthUI();
-}
-
-function logout() {
-  currentUser = null;
-  localStorage.removeItem('bharatf1_user');
-  updateAuthUI();
-  switchView('car');
-  showToast('Logged out successfully', '');
-}
-
-function updateAuthUI() {
-  const navAuth = document.getElementById('navAuthSection');
-  const adminTab = document.getElementById('tab-admin');
-  const createPollBtn = document.getElementById('btnOpenCreatePoll');
-  const guestBanner = document.getElementById('guestBanner');
-
-  if (currentUser) {
-    // Show user info pill
-    let roleClass = 'role-member';
-    if (currentUser.role === 'admin') roleClass = 'role-admin';
-    if (currentUser.role === 'guest') roleClass = 'role-guest';
-
-    navAuth.innerHTML = `
-      <div class="user-pill">
-        <span class="user-name">${escapeHtml(currentUser.username)}</span>
-        <span class="role-badge ${roleClass}">${currentUser.role.toUpperCase()}</span>
-      </div>
-      <button class="btn btn-ghost btn-sm" onclick="logout()">Logout</button>
-    `;
-
-    // Admin privileges
-    if (currentUser.role === 'admin') {
-      adminTab.classList.remove('hidden');
-      if (createPollBtn) createPollBtn.style.display = 'inline-flex';
-    } else {
-      adminTab.classList.add('hidden');
-      if (createPollBtn) createPollBtn.style.display = 'none';
-    }
-
-    // Guest Banner
-    if (guestBanner) {
-      guestBanner.style.display = (currentUser.role === 'guest') ? 'flex' : 'none';
-    }
-  } else {
-    // Logged out
-    navAuth.innerHTML = `
-      <button class="btn btn-admin btn-sm" onclick="openAuthModal('admin')">👑 Admin Login</button>
-      <button class="btn btn-red btn-sm" onclick="openAuthModal('login')">Login</button>
-      <button class="btn btn-ghost btn-sm" onclick="openAuthModal('signup')">Sign Up</button>
-    `;
-    adminTab.classList.add('hidden');
-    if (createPollBtn) createPollBtn.style.display = 'none';
-    if (guestBanner) guestBanner.style.display = 'none';
-  }
-}
-
-/* ==========================================================================
-   POLLS VIEW LOGIC
-   ========================================================================== */
-async function loadPolls() {
-  const container = document.getElementById('pollsListContainer');
-  if (!container) return;
-
-  const res = await apiCall('GET', '/api/polls');
-  if (!res.ok) {
-    container.innerHTML = `
-      <div style="text-align:center; padding:3rem; color:var(--text-muted);">
-        Please <a href="#" onclick="openAuthModal('login')" style="color:var(--gold);">log in</a> or 
-        <a href="#" onclick="continueAsGuest()" style="color:var(--saffron);">continue as guest</a> to view community polls.
-      </div>
-    `;
-    return;
-  }
-
-  const polls = res.data;
-  if (!polls || polls.length === 0) {
-    container.innerHTML = `
-      <div style="text-align:center; padding:3rem; color:var(--text-muted);">
-        No active polls found. Admins can create the first community poll!
-      </div>
-    `;
-    return;
-  }
-
-  let html = '';
-  polls.forEach(poll => {
-    const totalVotes = poll.options.reduce((sum, o) => sum + (o.votes || 0), 0);
-    const maxVotes = Math.max(...poll.options.map(o => o.votes || 0));
-    const userHasVoted = !!poll.user_vote;
-    const isGuest = currentUser && currentUser.role === 'guest';
-    const isAdmin = currentUser && currentUser.role === 'admin';
-
-    html += `
-      <div class="poll-card" id="pollCard-${poll.id}">
-        <div class="poll-top">
-          <div>
-            <div class="poll-question">${escapeHtml(poll.question)}</div>
-            <div class="poll-meta">
-              <span>Total Votes: <strong>${totalVotes}</strong></span>
-              <span>&bull;</span>
-              <span>Created: ${new Date(poll.created_at).toLocaleDateString()}</span>
-            </div>
-          </div>
-          ${isAdmin ? `<button class="poll-delete-btn" onclick="deletePoll(${poll.id})">🗑️ Delete</button>` : ''}
-        </div>
-
-        <div class="poll-options-container">
-    `;
-
-    poll.options.forEach(opt => {
-      const pct = totalVotes > 0 ? Math.round((opt.votes / totalVotes) * 100) : 0;
-      const isTop = opt.votes > 0 && opt.votes === maxVotes;
-      const isUserChoice = poll.user_vote === opt.id;
-
-      if (!userHasVoted && !isGuest && currentUser) {
-        // Active Voting Button
-        html += `
-          <button class="vote-option-btn" onclick="votePoll(${poll.id}, ${opt.id})">
-            <span class="vote-opt-content">
-              <span>⚪</span>
-              <span>${escapeHtml(opt.text)}</span>
-            </span>
-            <span class="vote-opt-stats">
-              <span>Click to vote</span>
-            </span>
-          </button>
-        `;
-      } else {
-        // Result Bar Display
-        html += `
-          <div class="vote-option-btn" disabled>
-            <div class="vote-progress-fill ${isTop ? 'top-pick' : ''}" style="width: ${pct}%"></div>
-            <div class="vote-opt-content">
-              <span>${isUserChoice ? '✅' : '⚪'}</span>
-              <span>${escapeHtml(opt.text)}</span>
-              ${isUserChoice ? '<span class="voted-badge">Your Vote</span>' : ''}
-            </div>
-            <div class="vote-opt-stats">
-              <strong>${pct}%</strong>
-              <span>(${opt.votes} votes)</span>
-            </div>
-          </div>
-        `;
-      }
-    });
-
-    html += `
-        </div>
-      </div>
-    `;
-  });
-
-  container.innerHTML = html;
-}
-
-async function votePoll(pollId, optionId) {
-  if (!currentUser || currentUser.role === 'guest') {
-    showToast('Please log in as a member to vote', 'error');
-    openAuthModal('login');
-    return;
-  }
-
-  const res = await apiCall('POST', `/api/polls/${pollId}/vote`, { option_id: optionId });
-  if (res.ok) {
-    showToast('🎉 Vote recorded!', 'success');
-    loadPolls();
-  } else {
-    showToast(res.data.error || 'Voting failed', 'error');
-  }
-}
-
-function toggleCreatePollBox(forceState) {
-  const box = document.getElementById('createPollBox');
-  if (forceState !== undefined) {
-    box.classList.toggle('open', forceState);
-  } else {
-    box.classList.toggle('open');
-  }
-}
-
-function addOptionRow() {
-  const container = document.getElementById('pollOptionsContainer');
-  const count = container.children.length + 1;
-  const row = document.createElement('div');
-  row.className = 'poll-opt-row';
-  row.innerHTML = `
-    <input type="text" class="form-control" placeholder="Option ${count}" required>
-    <button type="button" class="btn-remove-opt" onclick="removeOptionRow(this)">&times;</button>
-  `;
-  container.appendChild(row);
-}
-
-function removeOptionRow(btn) {
-  const container = document.getElementById('pollOptionsContainer');
-  if (container.children.length <= 2) {
-    showToast('A poll must have at least 2 options', 'error');
-    return;
-  }
-  btn.parentElement.remove();
-}
-
-async function submitNewPoll() {
-  const q = document.getElementById('newPollQuestion').value.trim();
-  const errEl = document.getElementById('createPollError');
-  errEl.style.display = 'none';
-
-  if (!q) {
-    errEl.textContent = 'Please enter a poll question';
-    errEl.style.display = 'block';
-    return;
-  }
-
-  const inputs = document.querySelectorAll('#pollOptionsContainer input');
-  const options = [];
-  inputs.forEach(inp => {
-    if (inp.value.trim()) options.push(inp.value.trim());
-  });
-
-  if (options.length < 2) {
-    errEl.textContent = 'Please provide at least 2 non-empty options';
-    errEl.style.display = 'block';
-    return;
-  }
-
-  const res = await apiCall('POST', '/api/polls', { question: q, options: options });
-  if (res.ok) {
-    showToast('🚀 New Poll Published!', 'success');
-    document.getElementById('newPollQuestion').value = '';
-    inputs.forEach(inp => inp.value = '');
-    toggleCreatePollBox(false);
-    loadPolls();
-  } else {
-    errEl.textContent = res.data.error || 'Failed to create poll';
-    errEl.style.display = 'block';
-  }
-}
-
-async function deletePoll(pollId) {
-  if (!confirm('Are you sure you want to permanently delete this poll?')) return;
-  const res = await apiCall('DELETE', `/api/polls/${pollId}`);
-  if (res.ok) {
-    showToast('Poll deleted', '');
-    loadPolls();
-  } else {
-    showToast(res.data.error || 'Delete failed', 'error');
-  }
-}
-
-/* ==========================================================================
-   ADMIN DASHBOARD LOGIC
-   ========================================================================== */
-async function loadAdminData() {
-  await Promise.all([loadAdminUsers(), loadAdminStats()]);
-}
-
-async function loadAdminStats() {
-  const [usersRes, pollsRes] = await Promise.all([
-    apiCall('GET', '/api/admin/users'),
-    apiCall('GET', '/api/polls')
-  ]);
-
-  if (usersRes.ok) {
-    const users = usersRes.data;
-    document.getElementById('statTotalUsers').textContent = users.length;
-    const adminsCount = users.filter(u => u.role === 'admin').length;
-    document.getElementById('statTotalAdmins').textContent = adminsCount;
-  }
-
-  if (pollsRes.ok) {
-    document.getElementById('statTotalPolls').textContent = pollsRes.data.length;
-  }
-}
-
-async function loadAdminUsers() {
-  const tbody = document.getElementById('adminUsersTbody');
-  if (!tbody) return;
-
-  const res = await apiCall('GET', '/api/admin/users');
-  if (!res.ok) {
-    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:2rem; color:#ff5252;">${res.data.error || 'Access denied'}</td></tr>`;
-    return;
-  }
-
-  const users = res.data;
-  let html = '';
-  users.forEach(u => {
-    const isRootAdmin = u.username.toLowerCase() === 'dhruv' || u.username.toLowerCase() === 'ahlawatdhruv';
-    const roleBadge = u.role === 'admin' 
-      ? '<span class="role-badge role-admin">ADMIN</span>' 
-      : '<span class="role-badge role-member">MEMBER</span>';
-
-    let actionBtn = '';
-    if (isRootAdmin) {
-      actionBtn = '<span style="color:var(--gold); font-weight:700; font-size:0.8rem;">👑 Root Admin (Protected)</span>';
-    } else if (u.role === 'admin') {
-      actionBtn = `<button class="btn btn-ghost btn-sm" onclick="demoteUser(${u.id}, '${escapeHtml(u.username)}')">Demote to Member</button>`;
-    } else {
-      actionBtn = `<button class="btn btn-admin btn-sm" onclick="promoteUser(${u.id}, '${escapeHtml(u.username)}')">Promote to Admin</button>`;
-    }
-
-    html += `
-      <tr>
-        <td>#${u.id}</td>
-        <td><strong>${escapeHtml(u.username)}</strong></td>
-        <td>${roleBadge}</td>
-        <td>${new Date(u.created_at).toLocaleDateString()}</td>
-        <td>${actionBtn}</td>
-      </tr>
-    `;
-  });
-
-  tbody.innerHTML = html;
-}
-
-async function promoteUser(userId, username) {
-  if (!confirm(`Promote ${username} to Administrator?`)) return;
-  const res = await apiCall('POST', `/api/admin/users/${userId}/promote`);
-  if (res.ok) {
-    showToast(`👑 ${username} promoted to Administrator`, 'success');
-    loadAdminData();
-  } else {
-    showToast(res.data.error || 'Promotion failed', 'error');
-  }
-}
-
-async function demoteUser(userId, username) {
-  if (!confirm(`Demote ${username} to Member?`)) return;
-  const res = await apiCall('POST', `/api/admin/users/${userId}/demote`);
-  if (res.ok) {
-    showToast(`👤 ${username} demoted to Member`, '');
-    loadAdminData();
-  } else {
-    showToast(res.data.error || 'Demotion failed', 'error');
-  }
-}
-
-function escapeHtml(str) {
-  if (!str) return '';
-  return str.replace(/[&<>'"]/g, tag => ({
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    "'": '&#39;',
-    '"': '&quot;'
-  }[tag] || tag));
-}
-
-/* ==========================================================================
-   WINDOW RESIZE & STARTUP
-   ========================================================================== */
-window.addEventListener('resize', () => {
-  const container = document.getElementById('canvas-container');
-  if (renderer && camera && container) {
-    camera.aspect = container.clientWidth / container.clientHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(container.clientWidth, container.clientHeight);
-  }
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  // Restore persisted session if available
-  const savedUser = localStorage.getItem('bharatf1_user');
-  if (savedUser) {
-    try {
-      currentUser = JSON.parse(savedUser);
-    } catch (e) {
-      currentUser = null;
-    }
-  }
-
-  updateAuthUI();
-  initThreeScene();
-  animate();
-
-  // Show front wing info initially after 1 second
-  setTimeout(() => {
-    inspectPart('front-wing');
-  }, 1000);
-});
-</script>
+  <script src="three.min.js"></script>
+  <script src="OrbitControls.js"></script>
+  <script src="js/car-3d.js"></script>
+  <script src="js/game-jeddah.js?v=20261031_15"></script>
+  <script src="js/app.js?v=20261031_5"></script>
 </body>
 </html>
