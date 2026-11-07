@@ -9,7 +9,10 @@ venv/
 .vscode/*
 !.vscode/launch.json
 !.vscode/tasks.json
+!.vscode/settings.json
+!.vscode/extensions.json
 *.db
 *.db-journal
 .DS_Store
 cloudflared.exe
+cloudflared.log

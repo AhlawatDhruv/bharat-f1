@@ -1,0 +1,43 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Bharat F1: Create virtual environment",
+            "type": "process",
+            "command": "python",
+            "args": [
+                "-m",
+                "venv",
+                "${workspaceFolder}\\.venv"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Bharat F1: Install dependencies",
+            "type": "process",
+            "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+            "args": [
+                "-m",
+                "pip",
+                "install",
+                "-r",
+                "${workspaceFolder}\\requirements.txt"
+            ],
+            "dependsOn": "Bharat F1: Create virtual environment",
+            "dependsOrder": "sequence",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Bharat F1: Setup",
+            "dependsOn": "Bharat F1: Install dependencies",
+            "dependsOrder": "sequence",
+            "problemMatcher": []
+        }
+    ]
+}

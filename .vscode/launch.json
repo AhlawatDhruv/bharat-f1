@@ -10,7 +10,7 @@
             "justMyCode": true
         },
         {
-            "type": "chrome",
+            "type": "pwa-chrome",
             "request": "launch",
             "name": "Launch Chrome against Bharat F1 (port 5000)",
             "url": "http://127.0.0.1:5000",

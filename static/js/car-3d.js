@@ -17,9 +17,6 @@ let mouse = new THREE.Vector2();
 let audioCtx = null;
 let engineOsc1 = null, engineOsc2 = null, engineGain = null, engineFilter = null;
 
-// User Session State
-let currentUser = null;
-
 // Part Engineering Specs Dictionary
 const PARTS_DATA = {
   'front-wing': {
@@ -266,8 +263,13 @@ function createBmuDecalCanvasTexture() {
    ========================================================================== */
 function initThreeScene() {
   const container = document.getElementById('canvas-container');
-  const width = container.clientWidth;
-  const height = container.clientHeight;
+  if (!container) return;
+  if (renderer && renderer.domElement && container.contains(renderer.domElement)) {
+    return; // Already initialized
+  }
+
+  const width = container.clientWidth || window.innerWidth || 800;
+  const height = container.clientHeight || (window.innerHeight - 70) || 600;
 
   // Scene
   scene = new THREE.Scene();
@@ -1511,4 +1513,19 @@ function inspectPart(partId) {
 
 function closePartCard() {
   document.getElementById('partCard').classList.remove('show');
+}
+
+// Auto-boot 3D Scene when ready
+function autoInitCarScene() {
+  const container = document.getElementById('canvas-container');
+  if (container && (!renderer || !renderer.domElement || !container.contains(renderer.domElement))) {
+    initThreeScene();
+    animate();
+  }
+}
+
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  setTimeout(autoInitCarScene, 50);
+} else {
+  document.addEventListener('DOMContentLoaded', autoInitCarScene);
 }

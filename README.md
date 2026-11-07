@@ -50,12 +50,15 @@ Open your browser and navigate to:
 
 ## 🛠️ Running in Visual Studio Code
 
-1. Open this repository folder in VS Code.
-2. Press **F5** or go to **Run and Debug** (`Ctrl+Shift+D`).
-3. Select:
+1. Install Python 3 and open this repository folder in VS Code.
+2. Install the recommended extensions when VS Code prompts you.
+3. Open **Terminal → Run Task… → `Bharat F1: Setup`** to create `.venv` and install the requirements.
+4. Press **F5** or open **Run and Debug** (`Ctrl+Shift+D`) and select:
    - **`Python: Run Bharat F1 Flask App`** to start the Flask backend.
-   - **`Launch Chrome against Bharat F1 (port 5000)`** to launch Chrome directly to `http://localhost:5000`.
-   - Or run **`Bharat F1: Full Stack (Flask + Chrome)`** compound configuration.
+   - **`Launch Chrome against Bharat F1 (port 5000)`** to launch Chrome directly to `http://127.0.0.1:5000`.
+   - Or **`Bharat F1: Full Stack (Flask + Chrome)`** to start both.
+
+The Python debug profile uses `.venv` as its default interpreter. If VS Code asks for an interpreter, select `.venv\Scripts\python.exe`.
 
 ---
 
